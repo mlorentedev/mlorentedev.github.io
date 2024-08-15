@@ -91,7 +91,7 @@ lang-ref: aboutme
 </p>
 
 <p style='text-align: justify;'> 
-You can also get my CV <a href="https://github.com/manulorente/manulorente.github.io/raw/main/assets/cv/CV_ManuelLorenteAlman.pdf" target="_blank" rel="noopener">here</a>. 
+You can also get my CV <a href="https://github.com/manulorente/manulorente.github.io/raw/master/assets/cv/CV_ManuelLorenteAlman.pdf" target="_blank" rel="noopener">here</a>. 
 </p>
 
 <p style='text-align: center;'> 
