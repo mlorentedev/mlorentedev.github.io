@@ -11,37 +11,84 @@ lang-ref: aboutme
 </p>
 
 <p style='text-align: justify;'>
-    I remember that while studying for my final assignments in my third year, I was thrilled by subjects like electronics, semiconductors, programming, and Linux. Since I realized I couldn't make a living from high-level sports, I knew I had to carve out my own future through studying and working in the 'real world.' So, I decided to find a tech company where I could develop all the engineering skills I was learning so I began my professional career in the semiconductor industry while finishing my degree in 2015.
+    During my time at the University of Seville, I dove deep into electronics, semiconductors, and programming. Since I couldn't pursue high-level sports, I focused on finding a tech career. I started working in the semiconductor industry while finishing my degree in 2015, balancing work and studies. That's when I realized that to be a successful engineer, you need to understand the entire product development process, from hardware design to software development. This belief motivated me to continuously learn about all aspects of product development. 
 </p>
 
 <p style='text-align: justify;'>
-    During my first years juggling my studies and my job, I believed that to be a successful engineer, you need to understand the entire product development process, from hardware design to software development. This belief motivated me to continuously learn about all aspects of product development. I felt that the more I studied, the more I realized there was to learn. And I decided to enroll a Master's degree in Electronics and Embedded Systems at the University of Malaga because I felt a lack of knowledge from my degree in hardware, PCB design, signal integrity, FPGA design, kernels, and real-time systems to excel in the semiconductor industry.
+    I felt that the more I studied, the more I realized there was to learn. And I decided to enroll a Master's degree in Electronics and Embedded Systems at the University of Malaga because I felt a lack of knowledge from my degree in many fields such as hardware, PCB design, signal integrity, FPGA design, and real-time systems to excel in the semiconductor industry.
 </p>
 
 <p style='text-align: justify;'>
-    After completing my Master's degree, one thing was clear: I wanted to continue expanding my engineering skills and become a true Full-Stack Engineer, not just in hardware, but also in software. To do this, I revisited old Linux and programming books and started diving into system design, data structures, databases, design patterns, and more. I wasn't focused on mastering any specific additional programming language but on understanding concepts, common data structures, libraries, and algorithms.
+    After completing my Master's degree, one thing was clear: I wanted to continue expanding my engineering skills and become a true Full-Stack Engineer, not just in hardware, but also in software. To do this, I revisited old Linux and programming books and started diving into system design, data structures, databases, design patterns, and more. I wasn't focused on mastering any specific new fancy programming language but on understanding concepts, common data structures, and algorithms.
 </p>
 
 <p style='text-align: justify;'>
-    This journey brought me to the world of cloud computing, DevOps culture, and system design, which captivated me. To deepen my knowledge, I joined the <a href="https://svqtech.com/comunidades/cloud-native-sevilla/" target="_blank" rel="noopener">Cloud Native Sevilla</a> community, where I learned from top professionals in the field. This motivated me to enroll in another master, in this case about Cloud Computing and DevOps at the University of Rey Juan Carlos. While I could have learned all of this on my own, I wanted a structured and evaluated approach, especially since It was difficult following it while working full-time and needed some schedule and organization.
+    This journey brought me to the world of cloud computing, DevOps culture, and system design, which fascinated me. To deepen my knowledge, I joined the <a href="https://svqtech.com/comunidades/cloud-native-sevilla/" target="_blank" rel="noopener">Cloud Native Sevilla</a> community, where I learned from top professionals in the field. 
 </p>
 
-| My Tech Stack |
-|:----------:|
-| Customer Support & Sales |
-| Technical Documentation & Training |
-| AWS & Azure |
-| K8s & Containers |
-| CI/CD |
-| System Design|
-| Databases |
-| API Design Patterns |
-| SDK & Drivers Development |
-| Embedded Software & RTOS |
-| PCB Design & Signal Processing |
+<p style='text-align: justify;'>
+    This motivated me to enroll in another master, in this case about Cloud Computing and DevOps at the University of Rey Juan Carlos. While I could have learned all of this on my own, I wanted a structured and evaluated approach, especially since It was difficult following it while working full-time and needed some schedule and organization.
+</p>
+
+<table align="center" border="1" cellpadding="10">
+  <tr>
+    <th style="text-align: center;">My Tech Stack</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Customer Support & Sales</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Technical Documentation & Training</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">AWS & Azure</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">K8s & Containers</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">CI/CD</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">System Design</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Databases</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">API and SDK Design</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Data structures and algorithms</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Embedded Software & RTOS</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">PCB Design & Signal Processing</td>
+  </tr>
+</table>
+
+### My Career Goals
 
 <p style='text-align: justify;'>
-    My current career goal is to further specialize in IT, focusing on Linux, DevOps, and cloud technologies. To this end, I have earned certifications in 
+    I have been working in the software industry for over 10 years now. I have worked on a variety of projects, from small to large, from simple to complex. I have worked with a variety of technologies, from low-level programming to high-level programming, but mainly focused on embedded systems.
+</p>
+
+<p style='text-align: justify;'>
+    Now, after all these years, I have decided to change my focus from embedded systems to software and cloud system design. I have always been interested in software development and system design, but I have never had the opportunity to work on these areas. So I took the decision some time ago to study some certifications in AWS, Kubernetes or Linux and complete all the academic knowledge I had with practical experience.
+</p>
+
+<p style='text-align: justify;'>
+    Back to this, and since I didn't have any practical experience in these areas, but all the concepts were already familiar to me, I decided to start this blog to share my personal projects, learning, and trying to documentate my journey in this refreshment of my career.
+</p>
+
+<p style='text-align: justify;'>
+    My idea was to masterize in several verticals: IT, cloud computing, Linux, Kubernetes, AWS, business strategies, and software development. 
+</p>
+
+<p style='text-align: justify;'>
+    To this end, I have earned certifications in 
     Linux (<a href="https://training.linuxfoundation.org/certification/certified-it-associate/" target="_blank" rel="noopener">LFCA</a>),
     AWS (<a href="https://aws.amazon.com/certification/certified-cloud-practitioner/" target="_blank" rel="noopener">Cloud Practitioner</a>),
     and Azure (<a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification" target="_blank" rel="noopener">Fundamentals</a>).
@@ -52,39 +99,81 @@ lang-ref: aboutme
                 <a href="https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/" target="_blank" rel="noopener">CKA</a>),
     and AWS (<a href="https://aws.amazon.com/certification/certified-solutions-architect-associate/" target="_blank" rel="noopener">Solutions Architect Associate</a>,
             <a href="https://aws.amazon.com/certification/certified-developer-associate/" target="_blank" rel="noopener">Developer Associate</a>).
+</p>
+
+<p style='text-align: justify;'>
     I believe these certifications will give me a solid and deeper knowledge, building on the experience I have gained over the years.
 </p>
 
 <p style='text-align: justify;'>
-    Now, I feel like I'm closer to the concept of a true Full-Stack Engineer, or as I like to call it, a "Full Engineer." That's why I decided to start this site: to share my knowledge and experiences, and to help others achieve their goals. Additionally, it serves as a personal record and guide for myself, as I tend to forget things, and writing about the most interesting ones helps me internalize everything. It is well-known that we typically learn 10% of what we read, 30% when we discuss, and 90% when we teach others.
+    Now, I feel like I'm closer to the concept of a true Full-Stack Engineer, or as I like to call it, a "Full Engineer." That's why I decided to start this site: to share my knowledge and experiences, and to help others achieve their goals. On the other hand, it serves as a personal record and guide for myself, as I tend to forget things, and writing about the most interesting ones helps me internalize everything. It is well-known that we typically learn 10% of what we read, 30% when we discuss, and 90% when we teach others.
 </p>
 
-## My Story
+### My Story
 
 <p style='text-align: justify;'>
-    I started my career as a characterization engineer at a well-established startup, <a href="https://es.wikipedia.org/wiki/Teledyne_Anafocus" target="_blank" rel="noopener">Anafocus</a>, where I was responsible for characterizing the image sensors the company was developing. My role involved designing test boards, developing test software, analyzing data, and writing reports. I focused on sensor characterization, automating measurements and analyzing data with Matlab, and Python, and communicating with the design team to improve the product.
+    I started my career as a characterization engineer at a well-established startup, <a href="https://es.wikipedia.org/wiki/Teledyne_Anafocus" target="_blank" rel="noopener">Anafocus</a>, where I was responsible for characterizing the image sensors the company was developing. My role involved designing test boards, developing test software, analyzing data, and writing reports. I focused on sensor characterization, automating measurements and analyzing data with Matlab, and Python, and communicating with the design team to refine products.
 </p>
 
 <p style='text-align: justify;'>
-    After completing my Engineering degree, I had the opportunity to temporarily move abroad and join our parent company, <a href="https://imaging.teledyne-e2v.com/products/standard-image-sensors/cmos-standard-image-sensors/" target="_blank" rel="noopener">e2v</a>, in France and China. During these two stays in 2017 and 2018, I learned a great deal about system design, C++ drivers, Python APIs for cameras middleware, and customer end-applications as part of the sales and application team.
+    After completing my Engineering degree, I had the opportunity to temporarily move abroad and join our parent company, <a href="https://imaging.teledyne-e2v.com/products/standard-image-sensors/cmos-standard-image-sensors/" target="_blank" rel="noopener">e2v</a>, n France and China, where I focused on system design, camera middleware, and customer-facing applications. These experiences taught me a lot about drivers, C++, and Python APIs, pushing me toward more software-oriented roles.
 </p>
 
-<p align="center">
+<div align="center">
     <img src="/assets/img/aboutme_1.jpg" alt="My photo" width="227" height="267">
+</div>
+
+<p style='text-align: justify;'>
+    Today, I’m an Application Engineer at Teledyne, in Denver, Colorado, managing technical support, product development, and customer relationships. I’m heavily involved in writing drivers, creating APIs for demos, and helping customers solve complex problems with the latest technology. This role also gives me the opportunity to develop business strategies and contribute to product management.
+</p>
+
+### Why This Blog?
+
+<p style='text-align: justify;'>
+    Since I have developed software for a long time, C, C++, Python, Java, etc. But sometimes, among those frameworks, I have lost the big picture. So I will gather all my knowledge and try form the basis: data structures, algorithms, design patterns, software architecture, etc.
 </p>
 
 <p style='text-align: justify;'>
-    Currently, I am an application engineer at the same company, now acquired by Teledyne, in the North American division, based in Denver, Colorado. My responsibilities include applications and technical support, with a focus on business development, customer relationships, and product management. I also develop drivers, APIs for proof of concepts and demos, write technical documentation, train the sales team, and provide technical presales and postsales support to customers.
+    This site is my space to share everything I’m learning—whether it's DevOps, cloud computing, or system design. It’s a place to document my projects, explore new tech, and help others with practical insights. Plus, writing about what I learn helps me cement it all. Think of it as my digital notebook, but feel free to dive in and learn with me!
 </p>
+
+### Books That Inspire Me
 
 <p style='text-align: justify;'>
-    I have always strived to maintain a balanced life. Outside of my professional career, I am passionate about fútbol and sports, particularly rowing, which I have practiced since I was 14 years old. I have had the pleasure of competing in several national and international championships, making many friends around the world. Nowadays, rowing is one of my hobbies, and I take advantage of the US mountains to enjoy trail running, hiking, and snowboarding in the Rockies!
-
+    Throughout my journey, I've found a lot of inspiration in books that not only focus on tech but also on business and personal growth. Here are a few of my favorites:
 </p>
 
-<p align="center">
+- **"Ninja Selling" by Larry Kendall** – A great book on building relationships and solving customer problems in a structured way.
+  
+  <div style="text-align:center">
+    <img src="/assets/img/ninja-selling.png" alt="Ninja Selling" width="300" height="468">
+  </div>
+
+- **"The Discipline of Market Leaders" by Michael Treacy & Fred Wiersema** – This book has had a huge impact on how I approach business strategies. It highlights the importance of focusing on operational excellence, product leadership, or customer intimacy.
+
+  <div style="text-align:center">
+    <img src="/assets/img/the-discipline-of-market-leaders.png" alt="The Discipline of Market Leaders" width="300" height="468">
+  </div>
+
+- **"The Art of the Start 2.0" by Guy Kawasaki** – An excellent guide for anyone looking to start their own business or personal project. It covers everything from creating a business model to building a prototype and marketing your idea.
+
+  <div style="text-align:center">
+    <img src="/assets/img/the-art-of-the-start-2.0.png" alt="The Art of the Start 2.0" width="300" height="450">
+  </div>
+
+<p style='text-align: justify;'>
+    These books have helped shape my approach to engineering, business, and life, making them essential reads for anyone serious about personal and professional growth.
+</p>
+
+### Outside of Tech
+
+<p style='text-align: justify;'>
+    I have always strived to maintain a balanced life. When I’m not coding, you’ll find me outdoors—whether it's rowing, trail running, or snowboarding in the Rockies. I’ve been a rower since I was 14, competing nationally and internationally, but these days, I do it just for fun.
+</p>
+
+<div align="center">
     <img src="/assets/img/aboutme_2.jpg" alt="My photo in the mountains" width="250" height="334">
-</p>
+</div>
 
 <p style='text-align: justify;'>
     ... and always learning, always improving, always growing. I look forward to new challenges to continue feeding the Full Engineer inside me.
