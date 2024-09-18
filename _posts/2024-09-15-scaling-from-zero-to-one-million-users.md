@@ -10,7 +10,7 @@ lang: en
 lang-ref: intro
 ---
 
-In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users. I will use a classic example of a social networking site called **buiter** to illustrate the key concepts.
+In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users. I will of this site to illustrate the key concepts.
 
 ### Single server architecture
 
@@ -22,7 +22,7 @@ To understand how the single server architecture works, let's take a look at the
     <img src="/assets/img/2024-09-15/single-server.png" alt="single server architecture" width="380" height="232">
 </div>
 
- 1. The user access the site through domain names, e.g., `api.buiter.com` or `www.buiter.com`. Usuallu, the Domain Name System (DNS) is a paid service provided by a third party.
+ 1. The user access the site through domain names, e.g., `api.fullengineer.net` or `www.fullengineer.net`. Usually, the Domain Name System (DNS) is a paid service provided by a third party.
 
  2. IP address of the server is resolved by the DNS server and returned to the client.
 
@@ -37,8 +37,8 @@ In general the communication process is the same for both web and mobile applica
 ```json
 {
   "id": 1,
-  "name": "Alice",
-  "email": "alice@buiter.com"
+  "name": "Manu",
+  "email": "manu@fullengineer.net"
 }
 ```
 
