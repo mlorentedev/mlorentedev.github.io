@@ -10,18 +10,16 @@ lang: en
 lang-ref: intro
 ---
 
-## Scaling from zero to one million users
-
 In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users. I will use a classic example of a social networking site called **buiter** to illustrate the key concepts.
 
 ### Single server architecture
 
-When you are starting a new project, you typically start with a single server architecture. This architecture is simple to set up and easy to maintain but everything is running on one server: web app, database, cache, etc. 
+When you are starting a new project, you typically start with a single server architecture. This architecture is simple to set up and easy to maintain but everything is running on one server: web app, database, cache, etc.
 
 To understand how the single server architecture works, let's take a look at the following diagram and the request flow:
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/single-server.png" alt="single server architecture" width="300" height="183">
+    <img src="/assets/img/2024-09-15/single-server.png" alt="single server architecture" width="380" height="232">
 </div>
 
  1. The user access the site through domain names, e.g., `api.buiter.com` or `www.buiter.com`. Usuallu, the Domain Name System (DNS) is a paid service provided by a third party.
@@ -49,7 +47,7 @@ In general the communication process is the same for both web and mobile applica
 With the growth of the user base, the single server architecture will not be able to handle the load. To scale the system, we need multiple servers. The first step is to move the database to a separate server. This architecture is called a two-tier architecture allowing them to scale independently.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/two-tier.png" alt="two-tier architecture" width="300" height="183">
+    <img src="/assets/img/2024-09-15/two-tier.png" alt="two-tier architecture" width="421" height="231">
 </div>
 
 Now the thing is which database to choose. There are two types of databases: SQL and NoSQL. SQL databases are good for complex queries and transactions since the represent and store data in tables and rows, where we can perform join operations using SQL accross diferent tables.The most popular SQL databases are MySQL, PostgreSQL, and Oracle. NoSQL databases are good for large amounts of data and are horizontally scalable and they are grouped into four categories: key-value stores, document stores, column-family stores, and graph databases. Where joins are not possible and data is stored in a non-tabular format. The most popular NoSQL databases are MongoDB, Cassandra, and Redis.
@@ -73,7 +71,7 @@ With this setup, web servers are not reachable anymore from the client side. The
 - If the traffic increases, we can add more web servers to the pool. This is called horizontal scaling.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/three-tier.png" alt="three-tier architecture" width="300" height="183">
+    <img src="/assets/img/2024-09-15/three-tier.png" alt="three-tier architecture" width="371" height="332">
 </div>
 
 ### Database replication
@@ -83,7 +81,7 @@ The best way to achieve high availability for the database is to replicate it. D
 Most applications require a much higher ratio or reads to writes. This, the number of slaves databases is usually larger than the number of master databases.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/databases-replication.png" alt="database replication" width="300" height="183">
+    <img src="/assets/img/2024-09-15/databases-replication.png" alt="database replication" width="416" height="375">
 </div>
 
 This model improves performance because more queries can be processed in parallel. It also improves fault tolerance because if the master database goes down, one of the slave databases can be promoted to the master database.
@@ -105,7 +103,7 @@ Let's see how the system is working now:
 Now it is time to improve the load/response time of the system.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/three-tier-with-database-replication.png" alt="three-tier architecture with database replication" width="300" height="183">
+    <img src="/assets/img/2024-09-15/three-tier-with-database-replication.png" alt="three-tier architecture with database replication" width="391" height="477">
 </div>
 
 ### Adding a cache
