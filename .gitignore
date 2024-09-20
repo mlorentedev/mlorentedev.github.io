@@ -8,6 +8,10 @@ _site
 Thumbs.db
 ehthumbs.db
 
+# IDE
 Gemfile.lock
-
 beautiful-jekyll-theme-*.gem
+*.jekyll-cache
+
+# Drawio
+*.bkp

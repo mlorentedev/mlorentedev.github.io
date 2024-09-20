@@ -1,16 +1,18 @@
 ---
 layout: post
-title: Scaling from zero to one million users
+title: Scaling Beyond a Single Server
 date: "2024-09-15"
 categories: 
   - "System Design"
+  - "Architecture"
 tags: 
   - "system design"
+  - "architecture"
 lang: en
 lang-ref: intro
 ---
 
-In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users. I will of this site to illustrate the key concepts.
+In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users.
 
 ### Single server architecture
 
@@ -107,3 +109,39 @@ Now it is time to improve the load/response time of the system.
 </div>
 
 ### Adding a cache
+
+A cache is a temporary storage that stores frequently accessed data. It is used to reduce the load on the database and improve the response time of the system.
+
+After receiving a request, the web server checks the cache first. If the data is found in the cache, the web server returns the data to the client. If the data is not found in the cache, the web server reads the data from the database, stores it in the cache, and then returns the data to the client.
+
+There are few consideration fo r using a cache:
+
+- When to use a cache: Use a cache when the data is read frequently and the data is not updated frequently.
+
+- Expiration policy: Set an expiration time for the data in the cache. This is to ensure that the data in the cache is not stale.
+
+- Consistency: Make sure that the data in the cache is consistent with the data in the database. When the data in the database is updated, the data in the cache should be invalidated.
+
+- Cache eviction policy: When the cache is full, the cache needs to evict some data to make room for new data. There are several cache eviction policies, such as Least Recently Used (LRU), Least Frequently Used (LFU), and First In First Out (FIFO).
+
+- Mitigation failures: When the cache is down, the web server should still be able to serve the request. One way to achieve this is to use a write-through cache, where the web server writes the data to the cache and the database at the same time.
+
+### Content Delivery Network (CDN)
+
+a CDN is a network of servers distributed geographically that store cached content. It is used to reduce the load on the web server and improve the response time of the system.
+
+When a user requests a file, the CDN checks if the file is in the cache. If the file is found in the cache, the CDN returns the file to the user. If the file is not found in the cache, the CDN requests the file from the web server, stores it in the cache with a HTTP heate Time-to-Live (TTL) describing how long the file is cached, and then returns the file to the user.
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/content-delivery-network.png" alt="content delivery network" width="475" height="219">
+</div>
+
+The main constraint of the CDN is the cost since they are run by third-party companies and they charge based on the amount of data transferred. Also is importanto to set an appropriate TTL to avoid serving stale data even prepare some strategy when the CDN is down.
+
+Below is the final architecture of the system where static assets (JS, CSS, images, etc.) are served by the CDN and dynamic content is served by the web server while the database liad is ligthened by caching the data.
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/three-tier-with-database-replication-and-cache.png" alt="final architecture" width="570" height="476">
+</div>
+
+### Stateless web tier

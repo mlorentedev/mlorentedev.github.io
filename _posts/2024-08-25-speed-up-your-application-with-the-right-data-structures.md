@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why Data Structures are important
+title: Speed Up Your Application with the Right Data Structures
 date: "2024-08-25"
 categories: 
   - "Data Structures"
