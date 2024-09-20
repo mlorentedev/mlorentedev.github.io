@@ -27,7 +27,7 @@ lang-ref: aboutme
 </p>
 
 <p style='text-align: justify;'>
-    This journey brought me to the world of cloud computing, DevOps culture, and system design, which fascinated me. To deepen my knowledge, I joined the <a href="https://svqtech.com/comunidades/cloud-native-sevilla/" target="_blank" rel="noopener">Cloud Native Sevilla</a> community, what motivated me to enroll in another master, in this case about Cloud Computing and DevOps at the University of Rey Juan Carlos. While I could have learned all of this on my own, I wanted a structured and evaluated approach, especially since It was difficult following it while working full-time and needed some schedule and organization.
+    This journey brought me to the world of cloud computing, DevOps culture, and system design, which fascinated me. To deepen my knowledge, I joined the <a href="https://svqtech.com/comunidades/cloud-native-sevilla/" target="_blank" rel="noopener">Cloud Native Sevilla</a> community, what motivated me to enroll in another master, in this case about Cloud Native Applications Development at the University of Rey Juan Carlos. While I could have learned all of this on my own, I wanted a structured and evaluated approach, especially since It was difficult following it while working full-time and needed some schedule and organization.
 </p>
 
 ### My Career Goals
