@@ -8,7 +8,8 @@ categories:
 tags: 
   - "system design"
   - "architecture"
-lang: en
+readtime: true
+language: en
 lang-ref: intro
 ---
 

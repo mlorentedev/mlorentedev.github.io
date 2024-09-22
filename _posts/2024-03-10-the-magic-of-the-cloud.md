@@ -7,7 +7,8 @@ categories:
   - "Scalability"
 tags: 
   - "cloud"
-lang: en
+readtime: true
+language: en
 lang-ref: intro
 ---
 

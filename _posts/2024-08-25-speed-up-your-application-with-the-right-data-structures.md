@@ -8,7 +8,8 @@ categories:
 tags: 
   - "data structures"
   - "algorithms"
-lang: en
+readtime: true
+language: en
 lang-ref: intro
 ---
 

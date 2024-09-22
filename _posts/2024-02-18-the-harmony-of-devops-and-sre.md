@@ -8,7 +8,8 @@ categories:
 tags: 
   - "devops"
   - "sre"
-lang: en
+readtime: true
+language: en
 lang-ref: intro
 ---
 
