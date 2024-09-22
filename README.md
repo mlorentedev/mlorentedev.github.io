@@ -61,4 +61,3 @@ You can add notification, warning and error boxes like this:
 
 {: .box-success}
 **Success:** This is a success box.
-

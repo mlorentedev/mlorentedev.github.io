@@ -1,20 +1,21 @@
 El antes y después de DevOps: una revolución en el software 🚀👨‍💻
-1️⃣ Antes de DevOps, el desarrollo de software era lento y frustrante. ¿La razón? Los equipos trabajaban aislados: desarrollo, pruebas y operaciones casi no se hablaban entre sí. 🤐
 
-2️⃣ Modelo Waterfall: uno de los enfoques más usados antes de DevOps. Todo se hacía en fases: primero el diseño, luego la implementación, luego las pruebas. 📋 Esto llevaba a largos ciclos de desarrollo y a veces, cuando se encontraba un error, ¡había que volver al inicio! ⏳
+1️⃣ Antes de DevOps, el desarrollo de software era lento y frustrante. Los equipos trabajaban aislados: desarrollo, pruebas y operaciones casi no se hablaban entre sí. 🤐
 
-3️⃣ Ejemplo: ¿Recuerdas la caída de PlayStation Network en 2011? 🎮 Durante 23 días, más de 100 millones de usuarios no pudieron acceder al servicio. Esto pasó porque no había comunicación adecuada entre equipos, y las actualizaciones de seguridad se aplicaban manualmente. 😓
+2️⃣ El modelo Waterfall era el rey. Todo se hacía por fases: diseño, implementación y pruebas. 📋 Esto llevaba a ciclos eternos y, si encontrabas un error, ¡tenías que empezar de nuevo! ⏳
 
-4️⃣ DevOps cambió todo esto. Al romper las barreras entre los equipos, se pueden hacer entregas continuas sin sacrificar calidad. 🏗️
+3️⃣ ¿Recuerdas la caída de PlayStation Network en 2011? 🎮 23 días offline y millones de usuarios afectados. Todo porque no había comunicación entre equipos, y las actualizaciones se hacían manualmente. 😓
 
-5️⃣ Con DevOps, las tareas manuales que solían causar errores, como despliegues o pruebas, ahora se automatizan. Herramientas como Ansible, Terraform y Docker se usan para gestionar infraestructura como si fuera código. 📜
+4️⃣ DevOps cambió las reglas. Al unir equipos, las entregas se hacen de forma continua y sin perder calidad. 🏗️
 
-6️⃣ Ejemplo: Netflix es un pionero en el uso de DevOps. 💡 Su enfoque les permite hacer miles de despliegues diarios sin que los usuarios experimenten interrupciones. 📺 Usan herramientas como Spinnaker para asegurar que todo se despliegue de manera confiable. ✅
+5️⃣ Lo que antes era manual y propenso a errores, como los despliegues, ahora se automatiza. Herramientas como Ansible, Terraform y Docker gestionan la infraestructura como código. 📜
 
-7️⃣ ¿Cómo funciona esto en la práctica? 🚀 Usando la técnica de CI/CD (Integración y Despliegue Continuos), el código se integra varias veces al día y, si pasa todas las pruebas, se despliega automáticamente a producción. ¡Sin esperar meses para una nueva versión! ⏩
+6️⃣ Netflix es un ejemplo top. 💡 Con DevOps, hacen miles de despliegues diarios sin interrumpir el servicio. Usan Spinnaker para garantizar despliegues confiables. ✅
 
-8️⃣ SRE complementa a DevOps garantizando que el sistema sea escalable y confiable. Si tu aplicación empieza a recibir más usuarios de lo esperado, SRE se asegura de que los servidores se ajusten automáticamente y eviten caídas. ☁️
+7️⃣ ¿Cómo lo logran? 🚀 Con CI/CD (Integración y Despliegue Continuos), integran código varias veces al día. Si pasa las pruebas, ¡se despliega sin demoras! ⏩
 
-9️⃣ Ejemplo: durante el Black Friday, tiendas en línea como Amazon dependen de SRE para manejar el tráfico masivo 🌐. Utilizan herramientas como Kubernetes para escalar automáticamente los servidores según la demanda. 📈
+8️⃣ SRE (Site Reliability Engineering) complementa a DevOps. Cuando la demanda crece, SRE ajusta los servidores automáticamente para evitar caídas. ☁️
 
-🔟 Así que, mientras DevOps se enfoca en la innovación y automatización, SRE se encarga de la fiabilidad y escalabilidad. ¡Son el equipo perfecto para el desarrollo moderno! 💪
+9️⃣ Durante Black Friday, tiendas como Amazon dependen de SRE para manejar el tráfico masivo 🌐. Con Kubernetes, escalan sus servidores según la demanda. 📈
+
+🔟 DevOps impulsa la innovación, y SRE garantiza la fiabilidad. ¡El equipo perfecto para el desarrollo moderno! 💪
