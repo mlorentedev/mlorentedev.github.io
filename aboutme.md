@@ -6,6 +6,10 @@ lang: en
 lang-ref: aboutme
 ---
 
+<div align="center">
+    <img src="/assets/img/aboutme/aboutme_1.jpg" alt="My photo" width="227" height="267">
+</div>
+
 <p style='text-align: justify;'>
     I've always been fascinated by the concept of "Full-Stack Engineer." During my Bachelor's in Telecommunications Engineering at the University of Seville, I often wondered what that meant and what it would take to achieve it. I soon realized that it involved not just system and backend software technologies, and frontend skills, but also hardware knowledge.
 </p>
@@ -73,7 +77,7 @@ lang-ref: aboutme
 </p>
 
 <div align="center">
-    <img src="/assets/img/aboutme_1.jpg" alt="My photo" width="227" height="267">
+    <img src="/assets/img/aboutme/aboutme_2.jpg" alt="My photo" width="250" height="334">
 </div>
 
 <p style='text-align: justify;'>
@@ -99,19 +103,19 @@ lang-ref: aboutme
 - **"Ninja Selling" by Larry Kendall** – A great book on building relationships and solving customer problems in a structured way.
   
   <div style="text-align:center">
-    <img src="/assets/img/ninja-selling.png" alt="Ninja Selling" width="300" height="468">
+    <img src="/assets/img/aboutme/ninja-selling.png" alt="Ninja Selling" width="300" height="468">
   </div>
 
 - **"The Discipline of Market Leaders" by Michael Treacy & Fred Wiersema** – This book has had a huge impact on how I approach business strategies. It highlights the importance of focusing on operational excellence, product leadership, or customer intimacy.
 
   <div style="text-align:center">
-    <img src="/assets/img/the-discipline-of-market-leaders.png" alt="The Discipline of Market Leaders" width="300" height="468">
+    <img src="/assets/img/aboutme/the-discipline-of-market-leaders.png" alt="The Discipline of Market Leaders" width="300" height="468">
   </div>
 
 - **"The Art of the Start 2.0" by Guy Kawasaki** – An excellent guide for anyone looking to start their own business or personal project. It covers everything from creating a business model to building a prototype and marketing your idea.
 
   <div style="text-align:center">
-    <img src="/assets/img/the-art-of-the-start-2.0.png" alt="The Art of the Start 2.0" width="300" height="450">
+    <img src="/assets/img/aboutme/the-art-of-the-start-2.0.png" alt="The Art of the Start 2.0" width="300" height="450">
   </div>
 
 <p style='text-align: justify;'>
@@ -125,7 +129,7 @@ lang-ref: aboutme
 </p>
 
 <div align="center">
-    <img src="/assets/img/aboutme_2.jpg" alt="My photo in the mountains" width="250" height="334">
+    <img src="/assets/img/aboutme/aboutme_3.jpg" alt="Me snowboarding" width="466" height="350">
 </div>
 
 <p style='text-align: justify;'>
