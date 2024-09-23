@@ -33,7 +33,7 @@ lang-ref: aboutme
 ### My Career Goals
 
 <p style='text-align: justify;'>
-    I have been working in the software industry for over 10 years now. I have worked on a variety of projects, from small to large, from simple to complex. I have worked with a variety of technologies, from low-level programming to high-level programming, but mainly focused on embedded systems.
+    I have been working in the software industry for over 10 years now. On a variety of projects, from small to large, from simple to complex, and with a variety of technologies, from low-level programming to high-level programming, but mainly focused on embedded systems.
 </p>
 
 <p style='text-align: justify;'>
