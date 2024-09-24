@@ -68,3 +68,5 @@ Does it mean that sets are always slower than arrays? Not necessarily. Sets are 
 > The answer is N steps. The reason is that the computer needs to iterate through the entire array to find all the ocurrences. So, the search operation in an array takes N steps to find all the ocurrences.
 
 The take away from this is that the selection of the right data structure can make a huge difference in the performance of your application, but we cannot obvious the business logic of the application. So, when you are designing your routine, think about the data structures you are going to use and how they will impact the performance of your application. Only uses a set when is needed, for example, when you need to create a list of unique elements. Otherwise, use an array.
+
+We will dive into more data structures in the coming posts. Stay tuned!

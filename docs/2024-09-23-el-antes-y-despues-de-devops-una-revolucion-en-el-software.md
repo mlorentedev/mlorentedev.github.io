@@ -2,7 +2,7 @@ El antes y después de DevOps: una revolución en el software 🚀👨‍💻
 
 1️⃣ Antes de DevOps, el desarrollo de software era lento y frustrante. Los equipos trabajaban aislados: desarrollo, pruebas y operaciones casi no se hablaban entre sí. 🤐
 
-2️⃣ El modelo Waterfall era el rey. Todo se hacía por fases: diseño, implementación y pruebas. 📋 Esto llevaba a ciclos eternos y, si encontrabas un error, ¡tenías que empezar de nuevo! ⏳
+2️⃣ El modelo Waterfall era el rey. Todo se hacía por fases: diseño, implementación y pruebas. 📋 Esto llevaba a ciclos eternos y, si encontrabas un error, !tenías que empezar de nuevo! ⏳
 
 3️⃣ ¿Recuerdas la caída de PlayStation Network en 2011? 🎮 23 días offline y millones de usuarios afectados. Todo porque no había comunicación entre equipos, y las actualizaciones se hacían manualmente. 😓
 

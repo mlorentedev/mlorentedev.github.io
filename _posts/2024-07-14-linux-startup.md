@@ -126,4 +126,4 @@ Most installers set up some initial security features on the new system, such as
   <img src="/assets/img/2024-07-14/choose-distros.png" alt="Distros" width="1000" height="513">
 </div>
 
-Modern distributions simplify the installation process by allowing users to make software choices after the initial setup, reducing intimidation for new users compared to older methods that required numerous decisions upfront.
+Modern distributions simplify the installation process by allowing users to make software choices after the initial setup, reducing intimidation for new users compared to older methods that required numerous decisions upfront. Stay tuned for more in-depth discussions on Linux distributions in future posts.

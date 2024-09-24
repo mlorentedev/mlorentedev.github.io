@@ -207,3 +207,5 @@ Resources:
 ```
 
 While OpenTofu and AWS CloudFormation share similarities, they cater to different audiences. OpenTofu is ideal for users seeking an open-source alternative with flexibility and community-driven development. In contrast, AWS CloudFormation is the go-to choice for AWS-centric environments, offering seamless integration with other AWS services. Also the learning curve for CloudFormation is less steep for AWS users while OpenTofu is more flexible and can be used across multiple cloud providers since it is open-source and forked from Terraform.
+
+Thanks for read until here! I hope you enjoyed this post. Stay tuned for more exciting content on DevOps, Cloud Computing, and Automation. Happy coding!

@@ -146,3 +146,93 @@ Below is the final architecture of the system where static assets (JS, CSS, imag
 </div>
 
 ### Stateless web tier
+
+Now it is time to improve the scalability of the system. For this, we need to move state (user session data) out of the web tier. A good practice is to store this session data in a persistent storage like a database or a cache where each server in the cluster can aceess it. This architecture is called a stateless web tier.
+
+The opposite of a stateless web tier is a stateful web tier where the session data is stored in the memory of the web server. This architecture is not scalable because the session data is lost when the web server goes down.
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/stateful-vs-stateless.png" alt="stateful vs stateless web tier" width="482" height="732">
+</div>
+
+The issue with stateful web tier is that every request from the same cliente must be routed to the same server. This is called session affinity or sticky session. This is not scalable because the load balancer needs to keep track of the session data and route the request to the same server, this adds an overhead to the load balancer.
+
+However, the stateless web tier is scalable because the HTTP request can be routed to any server in the cluster, which fetch state data from a shared data store.
+
+Next graph shows the updated architecture with the stateless web tier:
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/three-tier-with-database-replication-cache-stateless.png" alt="stateless web tier" width="630" height="476">
+</div>
+
+The shared data store could be a relational database, a NoSQL database, or a cache. The choice of NoSQL is as it is easy to scale. Autoscaling means adding or removing web servers automatically based on th traffic load.
+
+### Data centers
+
+When the app grows and attracts a significant of number of useres internationally, it is time to improve the availability of the system across wider geographical areas. This can be achieved by deploying the system in multiple data centers.
+
+in the event of a data center failure, the traffic can be routed to another data center. This is called disaster recovery.
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/multiple-data-centers.png" alt="multiple data centers" width="775" height="496">
+</div>
+
+One of the technical challenges of deploying the system in multiple data centers is data synchronization. Users from different regions could use differentlocal databases or caches. In failover cases, the data in the local database or cache could be stale. A common strategy is to replicate the data across data centers using a distributed database like Cassandra.
+
+With multi-data center setup, it is important to test the application at different locations. Automated deployment tools are vital to keep the system up and consisten throughout the data centers.
+
+### Message queues
+
+To further scale our system, we need to decouple different components so the can be scaled independently. One way to achieve this is by using message queues. A message queue is a strategy employed by many real-time applications to handle the large volume of messages that are passed between different components of the system.
+
+A message queue is a system that allows different components of a system to communicate with each other by sending messages. The message queue acts as a buffer between the sender and the receiver. The sender sends a message to the message queue, and the receiver reads the message from the message queue.
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/message-queue.png" alt="message queue" width="1295" height="486">
+</div>
+
+With the message queue, the produce can post a message to the queue and the consumer can read the message from the queue. The message queue can be used to decouple different components of the system, so they can be scaled independently.
+
+Imagine that the application supports photo customization. Those customization tasks take time to complete. Photo processing workers pick up jobs from the message queue and asynchronously perform photo customization. This way, the web server can respond to the user quickly without waiting for the photo customization to complete.
+
+When the size of the message queue grows, we can add more photo processing workers to the system and if the queue is empty, we can remove some workers. This is called autoscaling.
+
+### Logging and metrics
+
+When working with a small application, it is easy to debug and monitor the system. But as the application grows, it becomes more difficult to debug and monitor the system. To solve this problem, we need to log and monitor the system.
+
+Logging is the process of recording events that happen in the system. Logs are useful for debugging and troubleshooting the system. We can monitor error logs at per server level or use tools like Logstash, Splunk, or Sumo Logic to aggregate logs from multiple servers.
+
+Metrics are used to measure the performance of the system. Metrics are useful for monitoring the system and identifying bottlenecks. We can use tools like Graphite, Grafana, or Datadog to collect and visualize metrics.
+
+These tools leverage automation to monitor the system and alert the team when something goes wrong. This is called monitoring as a service.
+
+Including the logging and metrics in the system we are able to monitor the system and identify bottlenecks. This is the final architecture of the system:
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/final-architecture.png" alt="final architecture" width="775" height="581">
+</div>
+
+### Database scaling
+
+As the data grows exponentially, the database gets more overloaded. To solve this problem, we need to scale the database. There are two ways to scale the database: vertical scaling and horizontal scaling.
+
+Vertical scaling is adding more resources to a single server, such as CPU, memory, storage, etc. This is called scaling up. The limitation of vertical scaling is the hardware limitation. The server can only handle a certain amount of resources but the overall cost is high since powerful servers are expensive.
+
+Horizontal scaling is adding more servers to the system, such as load balancers, web servers, database servers, etc. This is called scaling out. The advantage of horizontal scaling is that it is cost-effective and can handle more traffic.
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/databases-scaling.png" alt="databases scaling" width="1122" height="775">
+</div>
+
+Sharding separates the data into multiple databases. Each database is called a shard. The data is distributed across multiple shards based on a shard key. In this way, the data can be served based on the shard key that can be a user ID, a timestamp, or even a hash function.
+
+<div align="center">
+    <img src="/assets/img/2024-09-15/database-sharding.png" alt="sharding" width="1280" height="720">
+</div>
+
+The most important thing to consider when sharding is the shard key. The shard key should be evenly distributed across all shards. If the shard key is not evenly distributed, some shards will be overloaded while others are underloaded.
+
+Sharding is a great technique to scale the database but it is complex to implement. It requires a lot of effort to shard the database and maintain the shards. For example, resharding data is needed when the data grows rapidly or when the shard key is not evenly distributed. Also it exists the celebrity problem where a shard becomes a hotspot because of the high traffic on a single shard. The last issue is the join problem where joins are not possible across different shards. A common solution is to denormalize the data so that queries can be performed on a single table.
+
+And that's it! We have built a system from scratch that supports a single user and gradually scales to support one million users. I hope you enjoyed this post and learned something new. If you have any questions or feedback, feel free to send me an email. Thanks for reading!

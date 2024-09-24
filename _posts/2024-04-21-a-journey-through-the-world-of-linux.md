@@ -96,4 +96,5 @@ With an array of distributions available, organizations often lean towards comme
     <img src="/assets/img/2024-04-21/linux-services.png" alt="Linux services" width="1000" height="362">
 </div>
 
-Whether you’re a developer, system administrator, or just curious about Linux, understanding these families opens the door to a world of possibilities.
+Whether you’re a developer, system administrator, or just curious about Linux, understanding these families opens the door to a world of possibilities. Thanks for joining me on this journey through the world of Linux distributions! 🐧
+
