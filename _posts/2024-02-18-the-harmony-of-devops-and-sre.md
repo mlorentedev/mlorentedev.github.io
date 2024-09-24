@@ -35,13 +35,13 @@ Before the advent of DevOps, the software development landscape was different. I
 
 Let’s take a closer look at some of the defining features of traditional software development.
 
-#### Waterfall Model  
-
-At the forefront of software development methodologies was the Waterfall model, a linear approach where each stage had to be completed before progressing to the next. While it seemed structured, this model made it incredibly challenging to adapt to changes or respond swiftly to new requirements, leaving teams feeling like they were climbing a steep waterfall.
-
 <div align="center">
   <img src="/assets/img/2024-02-18/waterfall-model.png" alt="Waterfall Model">
 </div>
+
+#### Waterfall Model  
+
+At the forefront of software development methodologies was the Waterfall model, a linear approach where each stage had to be completed before progressing to the next. While it seemed structured, this model made it incredibly challenging to adapt to changes or respond swiftly to new requirements, leaving teams feeling like they were climbing a steep waterfall.
 
 #### Siloed Teams  
 

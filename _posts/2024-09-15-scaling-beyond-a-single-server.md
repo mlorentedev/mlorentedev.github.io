@@ -22,7 +22,7 @@ When you are starting a new project, you typically start with a single server ar
 To understand how the single server architecture works, let's take a look at the following diagram and the request flow:
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/single-server.png" alt="single server architecture" width="380" height="232">
+    <img src="/assets/img/2024-09-15/single-server.png" alt="single server architecture">
 </div>
 
  1. The user access the site through domain names, e.g., `api.fullengineer.net` or `www.fullengineer.net`. Usually, the Domain Name System (DNS) is a paid service provided by a third party.
@@ -50,7 +50,7 @@ In general the communication process is the same for both web and mobile applica
 With the growth of the user base, the single server architecture will not be able to handle the load. To scale the system, we need multiple servers. The first step is to move the database to a separate server. This architecture is called a two-tier architecture allowing them to scale independently.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/two-tier.png" alt="two-tier architecture" width="421" height="231">
+    <img src="/assets/img/2024-09-15/two-tier.png" alt="two-tier architecture">
 </div>
 
 Now the thing is which database to choose. There are two types of databases: SQL and NoSQL. SQL databases are good for complex queries and transactions since the represent and store data in tables and rows, where we can perform join operations using SQL accross diferent tables.The most popular SQL databases are MySQL, PostgreSQL, and Oracle. NoSQL databases are good for large amounts of data and are horizontally scalable and they are grouped into four categories: key-value stores, document stores, column-family stores, and graph databases. Where joins are not possible and data is stored in a non-tabular format. The most popular NoSQL databases are MongoDB, Cassandra, and Redis.
@@ -74,7 +74,7 @@ With this setup, web servers are not reachable anymore from the client side. The
 - If the traffic increases, we can add more web servers to the pool. This is called horizontal scaling.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/three-tier.png" alt="three-tier architecture" width="371" height="332">
+    <img src="/assets/img/2024-09-15/three-tier.png" alt="three-tier architecture">
 </div>
 
 ### Database replication
@@ -84,7 +84,7 @@ The best way to achieve high availability for the database is to replicate it. D
 Most applications require a much higher ratio or reads to writes. This, the number of slaves databases is usually larger than the number of master databases.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/databases-replication.png" alt="database replication" width="416" height="375">
+    <img src="/assets/img/2024-09-15/databases-replication.png" alt="database replication">
 </div>
 
 This model improves performance because more queries can be processed in parallel. It also improves fault tolerance because if the master database goes down, one of the slave databases can be promoted to the master database.
@@ -106,7 +106,7 @@ Let's see how the system is working now:
 Now it is time to improve the load/response time of the system.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/three-tier-with-database-replication.png" alt="three-tier architecture with database replication" width="391" height="477">
+    <img src="/assets/img/2024-09-15/three-tier-with-database-replication.png" alt="three-tier architecture with database replication">
 </div>
 
 ### Adding a cache
@@ -134,7 +134,7 @@ a CDN is a network of servers distributed geographically that store cached conte
 When a user requests a file, the CDN checks if the file is in the cache. If the file is found in the cache, the CDN returns the file to the user. If the file is not found in the cache, the CDN requests the file from the web server, stores it in the cache with a HTTP heate Time-to-Live (TTL) describing how long the file is cached, and then returns the file to the user.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/content-delivery-network.png" alt="content delivery network" width="475" height="219">
+    <img src="/assets/img/2024-09-15/content-delivery-network.png" alt="content delivery network">
 </div>
 
 The main constraint of the CDN is the cost since they are run by third-party companies and they charge based on the amount of data transferred. Also is importanto to set an appropriate TTL to avoid serving stale data even prepare some strategy when the CDN is down.
@@ -142,7 +142,7 @@ The main constraint of the CDN is the cost since they are run by third-party com
 Below is the final architecture of the system where static assets (JS, CSS, images, etc.) are served by the CDN and dynamic content is served by the web server while the database liad is ligthened by caching the data.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/three-tier-with-database-replication-and-cache.png" alt="final architecture" width="570" height="476">
+    <img src="/assets/img/2024-09-15/three-tier-with-database-replication-and-cache.png" alt="final architecture">
 </div>
 
 ### Stateless web tier
@@ -152,7 +152,7 @@ Now it is time to improve the scalability of the system. For this, we need to mo
 The opposite of a stateless web tier is a stateful web tier where the session data is stored in the memory of the web server. This architecture is not scalable because the session data is lost when the web server goes down.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/stateful-vs-stateless.png" alt="stateful vs stateless web tier" width="482" height="732">
+    <img src="/assets/img/2024-09-15/stateful-vs-stateless.png" alt="stateful vs stateless web tier">
 </div>
 
 The issue with stateful web tier is that every request from the same cliente must be routed to the same server. This is called session affinity or sticky session. This is not scalable because the load balancer needs to keep track of the session data and route the request to the same server, this adds an overhead to the load balancer.
@@ -162,7 +162,7 @@ However, the stateless web tier is scalable because the HTTP request can be rout
 Next graph shows the updated architecture with the stateless web tier:
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/three-tier-with-database-replication-cache-stateless.png" alt="stateless web tier" width="630" height="476">
+    <img src="/assets/img/2024-09-15/three-tier-with-database-replication-cache-stateless.png" alt="stateless web tier">
 </div>
 
 The shared data store could be a relational database, a NoSQL database, or a cache. The choice of NoSQL is as it is easy to scale. Autoscaling means adding or removing web servers automatically based on th traffic load.
@@ -174,7 +174,7 @@ When the app grows and attracts a significant of number of useres internationall
 in the event of a data center failure, the traffic can be routed to another data center. This is called disaster recovery.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/multiple-data-centers.png" alt="multiple data centers" width="775" height="496">
+    <img src="/assets/img/2024-09-15/multiple-data-centers.png" alt="multiple data">
 </div>
 
 One of the technical challenges of deploying the system in multiple data centers is data synchronization. Users from different regions could use differentlocal databases or caches. In failover cases, the data in the local database or cache could be stale. A common strategy is to replicate the data across data centers using a distributed database like Cassandra.
@@ -188,7 +188,7 @@ To further scale our system, we need to decouple different components so the can
 A message queue is a system that allows different components of a system to communicate with each other by sending messages. The message queue acts as a buffer between the sender and the receiver. The sender sends a message to the message queue, and the receiver reads the message from the message queue.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/message-queue.png" alt="message queue" width="1295" height="486">
+    <img src="/assets/img/2024-09-15/message-queue.png" alt="message queue">
 </div>
 
 With the message queue, the produce can post a message to the queue and the consumer can read the message from the queue. The message queue can be used to decouple different components of the system, so they can be scaled independently.
@@ -210,7 +210,7 @@ These tools leverage automation to monitor the system and alert the team when so
 Including the logging and metrics in the system we are able to monitor the system and identify bottlenecks. This is the final architecture of the system:
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/final-architecture.png" alt="final architecture" width="775" height="581">
+    <img src="/assets/img/2024-09-15/final-architecture.png" alt="final architecture">
 </div>
 
 ### Database scaling
@@ -222,13 +222,13 @@ Vertical scaling is adding more resources to a single server, such as CPU, memor
 Horizontal scaling is adding more servers to the system, such as load balancers, web servers, database servers, etc. This is called scaling out. The advantage of horizontal scaling is that it is cost-effective and can handle more traffic.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/databases-scaling.png" alt="databases scaling" width="1122" height="775">
+    <img src="/assets/img/2024-09-15/databases-scaling.png" alt="databases scaling">
 </div>
 
 Sharding separates the data into multiple databases. Each database is called a shard. The data is distributed across multiple shards based on a shard key. In this way, the data can be served based on the shard key that can be a user ID, a timestamp, or even a hash function.
 
 <div align="center">
-    <img src="/assets/img/2024-09-15/database-sharding.png" alt="sharding" width="1280" height="720">
+    <img src="/assets/img/2024-09-15/database-sharding.png" alt="sharding">
 </div>
 
 The most important thing to consider when sharding is the shard key. The shard key should be evenly distributed across all shards. If the shard key is not evenly distributed, some shards will be overloaded while others are underloaded.

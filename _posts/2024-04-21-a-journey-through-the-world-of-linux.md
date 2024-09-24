@@ -27,7 +27,7 @@ At its core, a Linux distribution is a bundle of software that includes the Linu
 - **SUSE**: Focused on enterprise and open-source solutions (openSUSE, SUSE Linux Enterprise).
 
 <div align="center">
-    <img src="/assets/img/2024-04-21/linux-distros.png" alt="Linux distributions" width="1000" height="327">
+    <img src="/assets/img/2024-04-21/linux-distros.png" alt="Linux distributions">
 </div>
 
 ## The Red Hat Family
@@ -73,7 +73,7 @@ Linux, an open-source operating system, originated in 1991 when Linus Torvalds, 
 Since its re-licensing under the GPL in 1992, Linux has grown into a powerhouse, currently powering over half of the servers on the Internet and the majority of smartphones via Android. It’s also the backbone for 90% of public cloud workloads.
 
 <div align="center">
-    <img src="/assets/img/2024-04-21/linux-history.png" alt="Linux history" width="400" height="362">
+    <img src="/assets/img/2024-04-21/linux-history.png" alt="Linux history">
 </div>
 
 ## Linux Philosophy
@@ -93,7 +93,7 @@ If you ever run into challenges while configuring a Linux server, the vibrant Li
 With an array of distributions available, organizations often lean towards commercially-supported options like Red Hat, SUSE, and Canonical (Ubuntu). Alternatives like CentOS, Alma Linux, and Rocky Linux have emerged, offering similar functionalities to RHEL.
 
 <div align="center">
-    <img src="/assets/img/2024-04-21/linux-services.png" alt="Linux services" width="1000" height="362">
+    <img src="/assets/img/2024-04-21/linux-services.png" alt="Linux services">
 </div>
 
 Whether you’re a developer, system administrator, or just curious about Linux, understanding these families opens the door to a world of possibilities. Thanks for joining me on this journey through the world of Linux distributions! 🐧

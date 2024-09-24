@@ -17,7 +17,7 @@ lang-ref: intro
 Understanding the Linux boot process is crucial for anyone diving into the world of Linux. It’s the sequence that kicks off when you power on your computer, leading up to a fully operational user interface. Grasping this process can enhance your troubleshooting skills and help you fine-tune your system's performance to fit your needs. While it can seem technical, fear not—you can start using Linux without diving deep into every detail.
 
 <div align="center">
-  <img src="/assets/img/2024-07-14/TheBootProcess.png" alt="Linux Startup" width="400" height="1084">
+  <img src="/assets/img/2024-07-14/TheBootProcess.png" alt="Linux Startup">
 </div>
 
 ## The Boot Process: A High-Level Overview
@@ -29,7 +29,7 @@ Let’s begin with the Basic Input/Output System (BIOS), the unsung hero of the 
 The BIOS is stored on a read-only memory (ROM) chip on the motherboard, and once it completes POST, it hands control over to the boot loader. This transition is critical, as it sets the stage for the next steps in the boot process.
 
 <div align="center">
-  <img src="/assets/img/2024-07-14/bios.png" alt="BIOS" width="400" height="514">
+  <img src="/assets/img/2024-07-14/bios.png" alt="BIOS">
 </div>
 
 ### Boot Loader: The Next Stage
@@ -37,7 +37,7 @@ The BIOS is stored on a read-only memory (ROM) chip on the motherboard, and once
 Once POST is complete, the boot loader takes over. This component is typically found on your hard disk or SSD, either in the Master Boot Record (MBR) for traditional systems or in the EFI partition for newer EFI/UEFI systems. At this point, the system doesn’t access any mass storage media yet. Instead, it pulls date, time, and peripheral information from the CMOS values.
 
 <div align="center">
-  <img src="/assets/img/2024-07-14/mbr.png" alt="Boot Loader" width="1000" height="423">
+  <img src="/assets/img/2024-07-14/mbr.png" alt="Boot Loader">
 </div>
 
 The boot loader plays a pivotal role in this process. Common examples include GRUB (the GRand Unified Bootloader), ISOLINUX (for removable media), and DAS U-Boot (for embedded devices). The boot loader loads the kernel image and the initial RAM disk into memory, preparing the system for the next phase.
@@ -55,7 +55,7 @@ Once the kernel is up and running, it interacts with the initial RAM disk (`init
 The init process takes it from here, handling the transition to the real root filesystem. If special drivers are required before mass storage is accessible, they reside in the `initramfs`.
 
 <div align="center">
-  <img src="/assets/img/2024-07-14/initramfs.png" alt="initramfs" width="1000" height="555">
+  <img src="/assets/img/2024-07-14/initramfs.png" alt="initramfs">
 </div>
 
 ### Text Mode Login
@@ -69,13 +69,13 @@ Linux systems usually start six text terminals and one graphical terminal, acces
 The kernel is the heart of the Linux operating system. Once loaded into RAM, it initializes memory and configures all hardware. The kernel also loads necessary user-space applications.
 
 <div align="center">
-  <img src="/assets/img/2024-07-14/kernel.png" alt="Kernel" width="400" height="556">
+  <img src="/assets/img/2024-07-14/kernel.png" alt="Kernel">
 </div>
 
 After the kernel sets everything up, it runs `/sbin/init`, becoming the initial process. From here, init manages other processes, ensuring everything runs smoothly. It handles service management—cleaning up after processes and managing user logins.
 
 <div align="center">
-  <img src="/assets/img/2024-07-14/sbin.png" alt="sbin" width="400" height="556">
+  <img src="/assets/img/2024-07-14/sbin.png" alt="sbin">
 </div>
 
 Traditionally, system initialization followed a sequential method called SysVinit, where runlevels determined service states. However, most distributions have transitioned away from this method in favor of more modern alternatives like `systemd`.
@@ -113,7 +113,7 @@ To maintain consistency, Linux adheres to the Filesystem Hierarchy Standard (FHS
 Linux uses the `/` character to separate paths (as sis UNIX unlike Windows, which uses `\`) and does not have drive letters. Multiple drives and/or partitions are mounted as directories in the single filesystem. Removable media such as USB drives and CDs, and DVDs will show up as mounted at `/run/media/yourusername/disklabel` for recent Linux systems or under `/media` for older distributions. For example, if your username is student, a USB pen drive labeled FEDORA might end up being found at `/run/media/student/FEDORA`, and a file `README.txt` on that disc would be at `/run/media/student/FEDORA/README.txt`.
 
 <div align="center">
-  <img src="/assets/img/2024-07-14/dirtree.jpg" alt="Filesystem" width="400" height="556">
+  <img src="/assets/img/2024-07-14/dirtree.jpg" alt="Filesystem">
 </div>
 
 ## Determining the Linux Distribution
@@ -123,7 +123,7 @@ Determining which Linux distribution to deploy requires thoughtful planning. The
 Most installers set up some initial security features on the new system, such as setting the password for the superuser root and setting up an initial user.
 
 <div align="center">
-  <img src="/assets/img/2024-07-14/choose-distros.png" alt="Distros" width="1000" height="513">
+  <img src="/assets/img/2024-07-14/choose-distros.png" alt="Distros">
 </div>
 
 Modern distributions simplify the installation process by allowing users to make software choices after the initial setup, reducing intimidation for new users compared to older methods that required numerous decisions upfront. Stay tuned for more in-depth discussions on Linux distributions in future posts.
