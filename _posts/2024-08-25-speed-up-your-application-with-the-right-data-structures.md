@@ -19,19 +19,24 @@ Let's start with the basics. When we start any piece of software development, we
 
 For example, let's say we need to write a routine to print odd numbers from 1 to 100. We can write a simple loop to iterate from 1 to 100 and print the odd numbers. But what if we need to print odd numbers from 1 to 1 million? The simple loop will work, but it will be slow. We can make it faster by using the right data structure.
 
-```python
-# Using a simple loop
-for i in range(1, 1000001):
-    if i % 2 != 0:
-        print(i)
+```go
+func printOddNumbers() {
+    for i := 1; i <= 1000000; i++ {
+        if i%2 != 0 {
+            fmt.Println(i)
+        }
+    }
+}
 ```
 
 On the other hand, if we decide to only iterate one out of every two numbers, we can use a different data structure to make it faster.
 
-```python
-# Using a simple loop
-for i in range(1, 1000001, 2):
-    print(i)
+```go
+func printOddNumbers() {
+    for i := 1; i <= 1000000; i += 2 {
+        fmt.Println(i)
+    }
+}
 ```
 
 Essentially the efficiency of a program is directly related to the speed and the speed can be translated on how many steps it takes to complete a task. Not on how long it takes to complete a task. The reason is because we don't know the hardware resources that will be available to run our program. So, we can't say that a program is efficient because it runs in 1 second. We can say that a program is efficient because it takes 100 steps to complete a task. Speed is also known as time complexity and the number of steps is known as space complexity.
