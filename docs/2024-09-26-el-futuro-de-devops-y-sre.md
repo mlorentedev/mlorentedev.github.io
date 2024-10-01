@@ -1,5 +1,3 @@
-🚀 El Futuro de DevOps y SRE 🔮
-
 DevOps ya ha revolucionado el desarrollo de software 💻, veamos cuales son las tendencias que nos esperan. 💥
 
 Automatización con IA 🤖: La IA y el Machine Learning harán todo más ágil. Las tareas repetitivas serán cosa del pasado. ¡Adiós a los despliegues manuales! 👋
