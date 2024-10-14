@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducción a la programación 2
+title: Introducción a la programación 2/2
 date: "2024-01-28"
 categories: 
   - "DevOps"
@@ -11,6 +11,8 @@ tags:
 readtime: true
 lang-ref: intro
 ---
+
+En esta segunda parte del curso de introducción a la programación, se abordarán algunos temas más avanzados, como la programación estructurada, las funciones y las tablas. Además, se introducirán conceptos básicos del sistema operativo UNIX, como la estructura de directorios y el sistema de ficheros. Acabaremos con unas nociones básicas sobre desarrollo colaborativo y control de versiones.
 
 ## Funciones
 
