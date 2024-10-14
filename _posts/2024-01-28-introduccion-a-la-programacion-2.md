@@ -9,7 +9,6 @@ tags:
   - "course"
   - "programming"
 readtime: true
-language: es
 lang-ref: intro
 ---
 
