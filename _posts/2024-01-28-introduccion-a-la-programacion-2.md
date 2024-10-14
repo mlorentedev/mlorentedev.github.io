@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducción a la programación (2/2)
+title: Introducción a la programación 2
 date: "2024-01-28"
 categories: 
   - "DevOps"
