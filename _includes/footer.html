@@ -10,12 +10,22 @@
           {% endfor %}
         </div>
       {% endif %}
+
+      {% if site.subscription %}
+      <div class="footer-custom-content">
+        {% include subscription-form.html %}
+      </div>
+      {% endif %}
+
       <p class="copyright text-muted">
       {% if site.author %}
         {{ site.author }}
         &nbsp;&bull;&nbsp;
       {% endif %}
       {{ site.time | date: '%Y' }}
+
+      &nbsp;&bull;&nbsp;
+      <a href="https://www.buymeacoffee.com/mlorentea" target="_blank">☕️Buy me a coffee</a>
       
       {% if site.url-pretty %}
         &nbsp;&bull;&nbsp;
@@ -23,21 +33,6 @@
           <a href="{% if site.url-canonical %}{{ site.url-canonical }}{% else %}{{ '/' | absolute_url }}{% endif %}">{{ site.url-pretty }}</a>
         </span>
       {% endif %}
-    
-      <div style="display: flex; justify-content: center; align-items: center;">
-        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" 
-            data-name="bmc-button" 
-            data-slug="mlorentea" 
-            data-color="#fafafa" 
-            data-emoji="☕"  
-            data-font="Comic" 
-            data-text="Buy me a coffee" 
-            data-outline-color="#000000" 
-            data-font-color="#323232" 
-            data-coffee-color="#FFDD00" 
-            class="bmc-button">
-        </script>
-      </div>
 
       {% if site.matomo %}
         {% if site.matomo.opt-out %}
