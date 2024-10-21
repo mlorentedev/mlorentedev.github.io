@@ -105,15 +105,15 @@ keywords: "fullengineer,devops,sre,cloud,programming,kubernetes,java,python,cpp,
 # Soft professional
 page-col: "#FFFFFF"
 text-col: "#333333"
-link-col: "#0085a1"
-hover-col: "#666666"
-navbar-col: "#0085a1"
-navbar-text-col: "#FFFFFF"
-navbar-border-col: "#0085a1"
+link-col: "#007ACC"
+hover-col: "#008099"
+navbar-col: "#F4F4F4"
+navbar-text-col: "#333333"
+navbar-border-col: "#DDDDDD"
 footer-col: "#F4F4F4"
 footer-text-col: "#666666"
 footer-link-col: "#333333"
-footer-hover-col: "#0085a1"
+footer-hover-col: "#008099"
 
 # Dark mode friendly
 #page-col: "#1E1E1E"
