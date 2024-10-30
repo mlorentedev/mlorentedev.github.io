@@ -1,9 +1,7 @@
-name: Beautiful Jekyll CI
+name: Nightly Build
 on: 
-  push:
-  pull_request:
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * *'
 jobs:
   build:
     name: Build Jekyll
