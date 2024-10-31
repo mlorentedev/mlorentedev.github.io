@@ -51,7 +51,7 @@ Because there will always be some amount of data at which the tides turn, and O(
 
 ### An algorithm of the third kind
 
-Let's now look at how to describe binary search in terms of Big O Notation. We cannot describre it as O(1). because the number of steps increases as the data increases. It also doesn't fit into the categoru of O)N), since the number of steps is much fewer that the N data elements. So, how do we describe binary search?
+Let's now look at how to describe binary search in terms of Big O Notation. We cannot describre it as O(1). because the number of steps increases as the data increases. It also doesn't fit into the categoru of O(N), since the number of steps is much fewer that the N data elements. So, how do we describe binary search?
 
 Binary search is an algorithm that takes log(N) steps to find an element in a sorted array of N elements. This is because binary search cuts the data in half with each step. This is the most efficient time complexity an algorithm can have, and it is expressed in Big O Notation as O(log(N)). This way descrober that the number of steps the algorithm increases one step each time the data is doubled.
 
