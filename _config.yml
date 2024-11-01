@@ -3,10 +3,10 @@
 ############################
 
 # Name of website
-title: nolidev
+title: mlorente
 
 # Your name to show in the footer
-author: Manuel Lorente
+author: Manu Lorente
 
 ###############################################
 # --- List of links in the navigation bar --- #
@@ -16,7 +16,7 @@ navbar-links:
   Blog: "/"
   Projects: "projects"
   About me: "aboutme"
-  #❤️ Support: "https://www.buymeacoffee.com/nolidev"
+  #❤️ Support: "https://www.buymeacoffee.com/mlorente"
 
 ################
 # --- Logo --- #
@@ -42,11 +42,11 @@ round-avatar: true
 # You can change the order that they show up on the page by changing the order here.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "hello@nolidev.com"
-  github: noli-dev
-  twitter: noli_dev
+  email: "hello@mlorente.dev"
+  github: mlorentedev
+  twitter: mlorentedev
   linkedin: manloralm
-  youtube: "@nolidev"
+  youtube: "@mlorentedev"
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
@@ -65,7 +65,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "nolidev.com"
+url-pretty: "mlorente.dev"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
