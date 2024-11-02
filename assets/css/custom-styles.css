@@ -519,3 +519,31 @@
     width: 100%; 
     height: 100%;
   }
+
+  .about-text {
+    margin-top: 3.5rem;
+    text-align: left;
+    font-size: 1.125rem;
+  }
+
+   /* Button - pdf */
+  
+   .btn-pdf {
+    color: #FFFFFF;                     /* Color del texto (blanco) */
+    background-color: #008099;          /* Color de fondo (azul) */
+    border-color: #008099;              /* Color del borde (azul) */
+    padding: 10px 20px;                 /* Espaciado interno */
+    text-decoration: none;               /* Sin subrayado */
+    border-radius: 5px;                 /* Bordes redondeados */
+    transition: background-color 0.3s;  /* Transición suave para el fondo */
+}
+
+.btn-pdf:hover {
+    color: #FFFFFF;                     /* Color del texto al pasar el ratón (blanco) */
+    background-color: #0099A1;;          /* Color de fondo al pasar el ratón (color hover) */
+    border-color: #0099A1;;              /* Color del borde al pasar el ratón (color hover) */
+}
+
+.btn-pdf:focus {
+    color: #FFFFFF;                     /* Color del texto al recibir foco (blanco) */
+}

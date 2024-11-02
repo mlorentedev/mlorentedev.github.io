@@ -252,6 +252,10 @@ kramdown:
   syntax_highlighter: coderay
 
 # Default YAML values (more information on Jekyll's site)
+collections:
+  projects:
+    output: true
+
 defaults:
   -
     scope:
@@ -265,6 +269,12 @@ defaults:
       path: "" # any file that's not a post will be a "page" layout by default
     values:
       layout: "page"
+  -
+    scope:
+      path: "projects"
+      type: "projects"
+    values:
+      layout: "post"
 
 # Exclude these files from production site
 exclude:
