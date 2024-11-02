@@ -9,9 +9,11 @@ tags:
   - "data structures"
   - "algorithms"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
+
+> ⚡️ **TL;DR**  
+> In this post, we explore how the choice of algorithms can significantly impact the efficiency of your programs. We'll discuss the importance of selecting the right algorithm and provide examples, such as sorting algorithms, to illustrate the differences in performance.
 
 Some posts ago, we talked about the importance of data structures. Now, we are going to discover that even if we decide on a particular data structure, another major factor that affects the efficiency of a program is the algorithm to use.
 

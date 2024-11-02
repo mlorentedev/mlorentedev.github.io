@@ -11,11 +11,11 @@ tags:
   - "sre"
   - "observability"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-In today’s fast-paced world of software development, understanding what happens inside your systems is crucial. Observability is the key to this understanding—it’s the ability to infer a system's internal state based on its external outputs. Think of it as the window through which we can view the inner workings of our applications by analyzing logs, metrics, and traces.
+> ⚡️ **TL;DR**  
+> In today’s fast-paced world of software development, understanding what happens inside your systems is crucial. Observability is the key to this understanding—it’s the ability to infer a system's internal state based on its external outputs. Think of it as the window through which we can view the inner workings of our applications by analyzing logs, metrics, and traces.
 
 ## Why Observability Matters
 

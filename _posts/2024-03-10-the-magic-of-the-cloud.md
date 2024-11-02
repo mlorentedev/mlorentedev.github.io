@@ -8,11 +8,11 @@ categories:
 tags: 
   - "cloud"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-Imagine a wide-open sky where you can store all your digital treasures and access them from anywhere. That’s the magic of the cloud—a virtual space where your data can live, free from the limits of your personal devices.
+> ⚡️ **TL;DR**  
+> Imagine a wide-open sky where you can store all your digital treasures and access them from anywhere. That’s the magic of the cloud—a virtual space where your data can live, free from the limits of your personal devices.
 
 The cloud isn’t just a faraway storage unit; it’s your digital playground. Instead of carrying around files like documents, photos, and videos, you can upload them to powerful servers that are scattered around the world. These servers work together to keep your information safe and available whenever you need it.
 

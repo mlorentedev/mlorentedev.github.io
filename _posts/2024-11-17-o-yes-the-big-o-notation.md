@@ -9,9 +9,11 @@ tags:
   - "Big O"
   - "Time Complexity"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
+
+> ⚡️ **TL;DR**  
+> In this post, we delve into Big O Notation, a fundamental concept in computer science used to describe the efficiency of algorithms. We'll explore how Big O helps in analyzing time complexity and provide examples to illustrate its application.
 
 In general, we can't simply label one algorithm a "400-ste algorithm" and another a "500-step algorithm". This is because the number of steps an algorithm takes cannot be pinned down to a single number. Let's take linear search, for example. The number of steps it takes to find an element in a list depends on the position of the element in the list. If the element is at the beginning of the list, the algorithm will take fewer steps than if the element is at the end of the list.
 

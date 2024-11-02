@@ -9,9 +9,11 @@ tags:
   - "data structures"
   - "algorithms"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
+
+> ⚡️ **TL;DR**  
+> In this post, we explore the importance of selecting the right data structures to enhance the performance of your applications. We'll discuss how different data structures can impact efficiency and provide examples to illustrate their use.
 
 Let's dive into the importance of data structures and how the selection of the right data structure can make a huge difference in the performance of your application.  
 

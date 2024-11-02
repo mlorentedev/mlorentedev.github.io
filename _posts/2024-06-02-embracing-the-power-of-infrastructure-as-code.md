@@ -10,11 +10,11 @@ tags:
   - "devops"
   - "iac"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-Infrastructure as Code (IaC) is revolutionizing the world of software development and IT operations. It’s transforming how we build, manage, and scale infrastructure by allowing us to describe and provision infrastructure elements through machine-readable scripts. Think of it as treating your infrastructure like software code!
+> ⚡️ **TL;DR**  
+> Infrastructure as Code (IaC) is revolutionizing the world of software development and IT operations. It’s transforming how we build, manage, and scale infrastructure by allowing us to describe and provision infrastructure elements through machine-readable scripts. Think of it as treating your infrastructure like software code!
 
 ## The Shift from Manual to Automated
 

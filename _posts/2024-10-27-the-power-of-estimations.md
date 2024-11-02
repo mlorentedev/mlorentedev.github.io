@@ -9,9 +9,11 @@ tags:
   - "data structures"
   - "sre"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
+
+> ⚡️ **TL;DR**  
+> In this post, we explore the importance of estimations in software development and site reliability engineering (SRE). We'll discuss how accurate estimations can improve project planning, resource allocation, and overall system reliability.
 
 I've been asked many times to estimate system capacity or performance requirements. It's a difficult task, but it's also a critical one. Estimations are the foundation of capacity planning, and a good back-of-the-envelope calculation can save you from a lot of trouble.
 

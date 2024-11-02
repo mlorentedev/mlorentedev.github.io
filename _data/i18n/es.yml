@@ -1,0 +1,9 @@
+navbar:
+  blog: "Blog"
+  projects: "Proyectos"
+  about: "Sobre mí"
+  search: "Buscar"
+  languages:
+    - label: "English"
+      icon: "🇬🇧"
+      url: "/en/"

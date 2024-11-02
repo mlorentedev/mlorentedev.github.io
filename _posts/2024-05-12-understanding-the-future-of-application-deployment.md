@@ -13,11 +13,11 @@ tags:
   - "microservices"
   - "k8s"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-In today's fast-paced tech world, quickly and efficiently deploying software applications is critical for businesses of all sizes. **Containers** are revolutionary technology that provides a lightweight, portable, and isolated environment for applications to run.
+> ⚡️ **TL;DR**  
+> In today's fast-paced tech world, quickly and efficiently deploying software applications is critical for businesses of all sizes. **Containers** are revolutionary technology that provides a lightweight, portable, and isolated environment for applications to run.
 
 ## The Concept of Containers
 

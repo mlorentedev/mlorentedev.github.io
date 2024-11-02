@@ -3,7 +3,7 @@
 ############################
 
 # Name of website
-title: mlorente
+title: Manu Lorente
 
 # Your name to show in the footer
 author: Manu Lorente
@@ -17,6 +17,14 @@ navbar-links:
   Projects: "projects"
   About me: "aboutme"
   #❤️ Support: "https://www.buymeacoffee.com/mlorente"
+
+navbar-languages:
+  - lang: "en"
+    url: "?lang=en"
+    icon: "🇺🇸"
+  - lang: "es"
+    url: "?lang=es"
+    icon: "🇪🇸"
 
 ################
 # --- Logo --- #
@@ -260,6 +268,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+      lang: "en"
       comments: true  # add comments to all blog posts
       social-share: true # add social media sharing buttons to all blog posts
   -

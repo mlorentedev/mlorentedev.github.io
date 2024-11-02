@@ -9,11 +9,11 @@ tags:
   - "system design"
   - "architecture"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users.
+> ⚡️ **TL;DR**  
+> In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users.
 
 ### Single server architecture
 

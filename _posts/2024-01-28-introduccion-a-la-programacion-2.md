@@ -9,10 +9,11 @@ tags:
   - "course"
   - "programming"
 readtime: true
-lang-ref: intro
+lang: es
 ---
 
-En esta segunda parte del curso de introducción a la programación, se abordarán algunos temas más avanzados, como la programación estructurada, las funciones y las tablas. Además, se introducirán conceptos básicos del sistema operativo UNIX, como la estructura de directorios y el sistema de ficheros. Acabaremos con unas nociones básicas sobre desarrollo colaborativo y control de versiones.
+> ⚡️ **TL;DR**  
+> En esta segunda parte del curso de introducción a la programación, se abordarán temas más avanzados como la programación estructurada, las funciones y las tablas. También se introducirán conceptos básicos del sistema operativo UNIX, como la estructura de directorios y el sistema de ficheros. Finalmente, se presentarán nociones básicas sobre desarrollo colaborativo y control de versiones.
 
 ## Funciones
 

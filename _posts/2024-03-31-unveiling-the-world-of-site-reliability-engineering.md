@@ -9,11 +9,11 @@ tags:
   - "devops"
   - "sre"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-In an era where digital services reign supreme, Site Reliability Engineering (SRE) emerges as a powerful methodology for managing large-scale systems, ensuring both reliability and performance. Pioneered by Google, SRE merges the realms of software engineering and traditional IT practices to forge scalable, dependable systems. At the heart of this approach are essential metrics: Service Level Indicators (SLIs), Service Level Objectives (SLOs), and Service Level Agreements (SLAs), which collectively define and uphold expected service performance.
+> ⚡️ **TL;DR**  
+> In an era where digital services reign supreme, Site Reliability Engineering (SRE) emerges as a powerful methodology for managing large-scale systems, ensuring both reliability and performance. Pioneered by Google, SRE merges the realms of software engineering and traditional IT practices to forge scalable, dependable systems. At the heart of this approach are essential metrics: Service Level Indicators (SLIs), Service Level Objectives (SLOs), and Service Level Agreements (SLAs), which collectively define and uphold expected service performance.
 
 SRE's innovative framework seamlessly integrates development and operations teams, striking a balance between system reliability and feature evolution. This transformative methodology has reshaped IT management, fostering faster innovation and delivering more reliable services across diverse industries.
 

@@ -9,11 +9,11 @@ tags:
   - "devops"
   - "sre"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-In the fast-paced kitchen of software development, two crucial roles emerge to ensure a smooth operation: the chef and the kitchen assistant. In our tech world, these roles are represented by DevOps and Site Reliability Engineering (SRE).
+> ⚡️ **TL;DR**  
+> In the fast-paced kitchen of software development, two crucial roles emerge to ensure a smooth operation: the chef and the kitchen assistant. In our tech world, these roles are represented by DevOps and Site Reliability Engineering (SRE).
 
 DevOps, a blend of Development and Operations, represents a set of practices and cultural philosophies designed to enhance collaboration between software development and IT operations teams. Think of DevOps as the chef—focused on creating innovative features and improvements, constantly experimenting with new recipes and techniques to delight customers.
 

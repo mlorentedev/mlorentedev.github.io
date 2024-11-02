@@ -9,8 +9,11 @@ tags:
   - "course"
   - "programming"
 readtime: true
-lang-ref: intro
+lang: es
 ---
+
+> ⚡️ **TL;DR**  
+> En este post, introducimos los conceptos básicos de la programación, incluyendo la definición de un programa, la importancia de la programación en la informática y la arquitectura básica de un ordenador. También discutimos los principales tipos de memoria.
 
 La informática es la ciencia que estudia todo lo regerente al procesamiento de la información de manera automática. La programación es una de las disciplinas más importantes de la informática, ya que es la que permite a los seres humanos comunicarse con las máquinas.
 

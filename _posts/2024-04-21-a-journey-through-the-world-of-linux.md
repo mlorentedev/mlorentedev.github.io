@@ -11,11 +11,11 @@ tags:
   - "operating systems"
   - "open source"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-Linux distributions are a fascinating aspect of the tech world, representing a powerful ecosystem that supports everything from personal computers to supercomputers. In this post, we'll dive deep into the main families of Linux distributions, explore their unique features, and understand their significance in the world of computing.
+> ⚡️ **TL;DR**  
+> Linux distributions are a fascinating aspect of the tech world, representing a powerful ecosystem that supports everything from personal computers to supercomputers. In this post, we'll dive deep into the main families of Linux distributions, explore their unique features, and understand their significance in the world of computing.
 
 ## What is a Linux Distribution?
 

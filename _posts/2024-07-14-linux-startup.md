@@ -10,11 +10,11 @@ tags:
   - "linux"
   - "open source"
 readtime: true
-language: en
-lang-ref: intro
+lang: en
 ---
 
-Understanding the Linux boot process is crucial for anyone diving into the world of Linux. It’s the sequence that kicks off when you power on your computer, leading up to a fully operational user interface. Grasping this process can enhance your troubleshooting skills and help you fine-tune your system's performance to fit your needs. While it can seem technical, fear not—you can start using Linux without diving deep into every detail.
+> ⚡️ **TL;DR**  
+> Understanding the Linux boot process is crucial for anyone diving into the world of Linux. It’s the sequence that kicks off when you power on your computer, leading up to a fully operational user interface. Grasping this process can enhance your troubleshooting skills and help you fine-tune your system's performance to fit your needs. While it can seem technical, fear not—you can start using Linux without diving deep into every detail.
 
 <div align="center">
   <img src="/assets/img/2024-07-14/TheBootProcess.png" alt="Linux Startup">
