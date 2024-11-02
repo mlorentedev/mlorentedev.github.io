@@ -183,31 +183,31 @@ With ordered arrays of small sizes, binary search is not necessarily faster than
 With this test, we can see that linear search is faster than binary search when the array is small. Let's see the results of the test:
 
 ``` bash
-manu@msi:~/Projects/dsa-sample$ make test-load 
-goos: linux
-goarch: amd64
-pkg: github.com/manulorente/dsa-sample/tests/load
-cpu: AMD Ryzen 7 5825U with Radeon Graphics         
-BenchmarkLinearSearchSorted-16          39052846                26.47 ns/op
-BenchmarkLinearSearchUnordered-16       163234096               10.75 ns/op
-BenchmarkBinarySearchSorted-16          140187739                8.609 ns/op
-PASS
-ok      github.com/manulorente/dsa-sample/tests/load    5.250s
+  manu@msi:~/Projects/dsa-sample$ make test-load 
+  goos: linux
+  goarch: amd64
+  pkg: github.com/manulorente/dsa-sample/tests/load
+  cpu: AMD Ryzen 7 5825U with Radeon Graphics         
+  BenchmarkLinearSearchSorted-16          39052846                26.47 ns/op
+  BenchmarkLinearSearchUnordered-16       163234096               10.75 ns/op
+  BenchmarkBinarySearchSorted-16          140187739                8.609 ns/op
+  PASS
+  ok      github.com/manulorente/dsa-sample/tests/load    5.250s
 ```
 
 In this test, we can see that linear search is faster than binary search when the array is small. This is because binary search has a higher overhead than linear search. However, as the size of the array increases, binary search becomes faster than linear search. This is because binary search eliminates half of the array each time it checks a value, so let's see the results of the test with an array of 100000 elements:
 
 ``` bash
-manu@msi:~/Projects/dsa-sample$ make test-load 
-goos: linux
-goarch: amd64
-pkg: github.com/manulorente/dsa-sample/tests/load
-cpu: AMD Ryzen 7 5825U with Radeon Graphics         
-BenchmarkLinearSearchSorted-16             24285             50476 ns/op
-BenchmarkLinearSearchUnordered-16          89139             72099 ns/op
-BenchmarkBinarySearchSorted-16          79832916                13.65 ns/op
-PASS
-ok      github.com/manulorente/dsa-sample/tests/load    11.110s
+  manu@msi:~/Projects/dsa-sample$ make test-load 
+  goos: linux
+  goarch: amd64
+  pkg: github.com/manulorente/dsa-sample/tests/load
+  cpu: AMD Ryzen 7 5825U with Radeon Graphics         
+  BenchmarkLinearSearchSorted-16             24285             50476 ns/op
+  BenchmarkLinearSearchUnordered-16          89139             72099 ns/op
+  BenchmarkBinarySearchSorted-16          79832916                13.65 ns/op
+  PASS
+  ok      github.com/manulorente/dsa-sample/tests/load    11.110s
 ```
 
 In this test, we can see that binary search is faster than linear search when the array is large and ordered. Although the number of iterations (steps) in binary search is higher than in linear search, the time it takes to complete the search is lower because binary search eliminates half of the array each time it checks a value so the time per operation (ns/op) is lower.
