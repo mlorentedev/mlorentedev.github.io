@@ -10,7 +10,7 @@ tags:
   - "programming"
 readtime: true
 lang: es
-pdf_url: https://mlorente.dev/assets/pdf/2024-01-07-introduccion-programacion.pdf
+pdf_url: https://mlorente.dev/assets/pdf/2024-01-07-introduccion-a-la-programacion.pdf
 ---
 
 <a href="{{ page.pdf_url }}" class="btn btn-pdf btn-lg">Descargar PDF</a>
