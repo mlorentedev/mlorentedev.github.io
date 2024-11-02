@@ -737,7 +737,7 @@ nav.top-nav-short-permanent ~ header > .intro-header.big-img {
   -moz-box-shadow: 1px 1px 3px #000;
 }
 .intro-header.big-img .post-heading .post-meta {
-  color: #EEE;
+  color: #eeeeee8e;
 }
 .intro-header.big-img .img-desc {
   background: rgba(30, 30, 30, 0.6);

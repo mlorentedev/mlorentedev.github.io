@@ -16,15 +16,6 @@ navbar-links:
   Blog: "/"
   Projects: "projects"
   About me: "aboutme"
-  #❤️ Support: "https://www.buymeacoffee.com/mlorente"
-
-navbar-languages:
-  - lang: "en"
-    url: "?lang=en"
-    icon: "🇺🇸"
-  - lang: "es"
-    url: "?lang=es"
-    icon: "🇪🇸"
 
 ################
 # --- Logo --- #
@@ -269,8 +260,6 @@ defaults:
     values:
       layout: "post"
       lang: "en"
-      comments: true  # add comments to all blog posts
-      social-share: true # add social media sharing buttons to all blog posts
   -
     scope:
       path: "" # any file that's not a post will be a "page" layout by default
