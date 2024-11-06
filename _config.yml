@@ -8,6 +8,10 @@ title: Manu Lorente
 # Your name to show in the footer
 author: Manu Lorente
 
+# SEO
+url: "https://mlorente.dev"
+baseurl: ''
+
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################
@@ -64,7 +68,7 @@ share-links-active:
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "mlorente.dev"
+# url-pretty: "mlorente.dev"
 
 # Add the website title to the title of every page
 title-on-all-pages: true
