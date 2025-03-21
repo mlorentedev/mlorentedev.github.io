@@ -73,10 +73,12 @@ Sorting algorithms have been the subject of extensive research and tens of them 
 Bubble Sort is a very basic sorting algorithm and follows these steps:
 
 1. Point two consecutive values in the array and compare the first item with the second.
+
   <div align="center">
       <img src="/assets/img/2024-11-17/bubble-sort-1.png" alt="Bubble Sort 1">
   </div>
 2. If the two items are out of order (the left is greater), swap them. If they already happen to be in the correct order, do nothing.
+
   <div align="center">
       <img src="/assets/img/2024-11-17/bubble-sort-2.png" alt="Bubble Sort 2">
   </div>
