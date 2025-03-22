@@ -9,18 +9,15 @@ RUN apk add --no-cache build-base
 
 # Copy Gemfile
 COPY Gemfile ./
-COPY Appraisals ./
-
-# Generate Gemfile.lock
-RUN bundle lock
 
 # Install Jekyll and dependencies
-RUN bundle install && bundle exec appraisal install
+RUN gem install bundler && bundle install
 
 # Copy the rest of the site
 COPY . .
 
 # Build the site
+RUN bundle exec appraisal install
 RUN bundle exec appraisal jekyll build
 
 # Stage 2: Serve the static site with nginx
