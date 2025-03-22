@@ -1,28 +1,42 @@
 services:
-  website:
-    image: ${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}:latest
-    container_name: ${ARTIFACT_NAME}
+  jekyll:
+    #image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}:latest"
+    build:
+      context: ./jekyll
+      dockerfile: Dockerfile
+    container_name: jekyll-site
+    volumes:
+      - ./jekyll:/srv/jekyll
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jekyll.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.jekyll.entrypoints=websecure"
+      - "traefik.http.routers.jekyll.tls.certresolver=myresolver"
+      - "traefik.http.services.jekyll.loadbalancer.server.port=4000"
+    networks:
+      - web
+
+  traefik:
+    image: traefik:v2.10
     restart: always
+    container_name: traefik
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--api.insecure=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.httpChallenge.entryPoint=web"
+      - "--certificatesresolvers.myresolver.acme.email=${EMAIL}"
+      - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
     ports:
       - "80:80"
       - "443:443"
+      - "8080:8080"  # Traefik dashboard
     volumes:
-      - ./certbot/www:/var/www/certbot/:rw
-      - ./certbot/conf:/etc/letsencrypt/:rw
-    environment:
-      - DOMAIN=${DOMAIN}
-    networks:
-      - web
-    depends_on:
-      - certbot
-
-  certbot:
-    image: certbot/certbot:latest
-    container_name: ${ARTIFACT_NAME}_certbot
-    volumes:
-      - ./certbot/www:/var/www/certbot/:rw
-      - ./certbot/conf:/etc/letsencrypt/:rw
-    command: certonly --webroot --webroot-path=/var/www/certbot --email ${ADMIN_EMAIL} --agree-tos --no-eff-email --force-renewal -d ${DOMAIN} -d www.${DOMAIN}
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./traefik/acme.json:/acme.json"
+      - "./traefik/traefik.yml:/etc/traefik/traefik.yml"
     networks:
       - web
 
