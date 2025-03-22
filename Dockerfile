@@ -7,9 +7,12 @@ WORKDIR /app
 # Install dependencies for building
 RUN apk add --no-cache build-base
 
-# Copy Gemfile and Gemfile.lock
-COPY Gemfile Gemfile.lock ./
+# Copy Gemfile
+COPY Gemfile ./
 COPY Appraisals ./
+
+# Generate Gemfile.lock
+RUN bundle lock
 
 # Install Jekyll and dependencies
 RUN bundle install && bundle exec appraisal install
