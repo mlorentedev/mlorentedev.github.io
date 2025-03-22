@@ -14,14 +14,12 @@ WORKDIR /app
 # Install specific Bundler version
 RUN gem install bundler -v 2.5.22
 
-# Copy Gemfile 
-COPY Gemfile ./
-
-# Generate Gemfile.lock and install dependencies
-RUN bundle lock && bundle install
-
-# Copy the entire project
+# Copy entire project (including gemspec)
 COPY . .
+
+# Install dependencies 
+RUN bundle config set --local path 'vendor/bundle' && \
+    bundle install
 
 # Build the site
 RUN bundle exec jekyll build

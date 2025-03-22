@@ -1,8 +1,27 @@
+# Git
 .git
-.github
-node_modules
+.gitignore
+
+# Docker
 Dockerfile
 docker-compose.yml
 .dockerignore
-README.md
+
+# Jekyll
+_site
+.jekyll-cache
+.bundle
+vendor/bundle
+
+# Certbot
+certbot/
+certbot/conf/
+certbot/www/
+
+# Local development
 .env
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
