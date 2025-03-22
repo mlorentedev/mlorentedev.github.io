@@ -20,19 +20,11 @@ COPY . .
 # Build the site
 RUN bundle exec appraisal jekyll build
 
-# Use nginx as base image
+# Stage 2: Serve the static site with nginx
 FROM nginx:alpine
 
-# Copy website content to nginx html directory
-COPY . /usr/share/nginx/html
-
-# Remove unnecessary files from the html directory
-RUN rm -rf /usr/share/nginx/html/Dockerfile \
-           /usr/share/nginx/html/docker-compose.yml \
-           /usr/share/nginx/html/.git \
-           /usr/share/nginx/html/scripts \
-           /usr/share/nginx/html/.gitignore \
-           /usr/share/nginx/html/nginx 2>/dev/null || true
+# Copy built site from the builder stage
+COPY --from=builder /app/_site /usr/share/nginx/html
 
 # Copy nginx configuration
 COPY nginx/conf/nginx.conf /etc/nginx/nginx.conf
