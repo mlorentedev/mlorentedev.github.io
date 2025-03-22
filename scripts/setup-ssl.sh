@@ -191,11 +191,11 @@ fi
 
 # Make sure we have the image
 log_info "Building Docker image..."
-docker compose build
+docker-compose build
 
 # Start Nginx container with temporary certificates
 log_info "Starting Nginx with temporary certificates..."
-docker compose up -d website || {
+docker-compose up -d website || {
   exit_error "Failed to start Nginx container. Check the Docker image and configuration."
 }
 
@@ -205,14 +205,14 @@ sleep 5
 
 # Stop Nginx
 log_info "Stopping Nginx to obtain real certificates..."
-docker compose stop website
+docker-compose stop website
 
 # Remove temporary certificates
 rm -rf ./certbot/conf/live/$DOMAIN
 
 # Get real certificates for main domain
 log_info "Obtaining certificates for $DOMAIN..."
-docker compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot \
+docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot \
   --email $ADMIN_EMAIL --agree-tos --no-eff-email --force-renewal \
   -d $DOMAIN -d www.$DOMAIN || {
     log_warning "Failed to obtain certificates for $DOMAIN. Using self-signed certificates instead."
@@ -228,7 +228,7 @@ docker compose run --rm certbot certonly --webroot --webroot-path=/var/www/certb
 
 # Start all services
 log_info "Starting services with SSL certificates..."
-docker compose up -d || {
+docker-compose up -d || {
   exit_error "Failed to start services. Check the configuration and certificates."
 }
 
