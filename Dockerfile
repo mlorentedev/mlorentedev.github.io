@@ -1,61 +1,39 @@
 # Stage 1: Build the Jekyll site
-FROM ruby:3.3-alpine AS builder
+FROM ruby:3.2.3-slim-bullseye
 
 # Install system dependencies
-RUN apk add --no-cache \
-    build-base \
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    zlib1g-dev \
     git \
-    bash \
-    zlib-dev
+    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
-# Set up gem home in user directory
-ENV GEM_HOME="/home/jekyll/gems"
-ENV PATH="/home/jekyll/gems/bin:$PATH"
+# Install specific Bundler version
+RUN gem install bundler -v 2.5.22
 
-# Create non-root user
-RUN addgroup -S jekyll && adduser -S jekyll -G jekyll
+# Copy Gemfile 
+COPY Gemfile ./
 
-# Change ownership
-RUN mkdir -p /app && chown -R jekyll:jekyll /app
+# Generate Gemfile.lock and install dependencies
+RUN bundle lock && bundle install
 
-# Switch to non-root user
-USER jekyll
-
-# Copy Gemfile and Gemfile.lock
-COPY --chown=jekyll:jekyll Gemfile Gemfile.lock ./
-
-# Install dependencies
-RUN bundle config set --local path 'vendor/bundle' && \
-    bundle install
-
-# Copy the rest of the site
-COPY --chown=jekyll:jekyll . .
+# Copy the entire project
+COPY . .
 
 # Build the site
 RUN bundle exec jekyll build
 
-# Stage 2: Serve the static site with nginx
+# Stage 2: Serve with nginx
 FROM nginx:alpine
 
-# Copy built site from the builder stage
-COPY --from=builder /app/_site /usr/share/nginx/html
+# Copy built site
+COPY --from=0 /app/_site /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY nginx/conf/nginx.conf /etc/nginx/nginx.conf
-COPY nginx/templates/default.conf.template /etc/nginx/templates/
-
-# Create folder for Nginx logs and set permissions
-RUN mkdir -p /var/log/nginx && \
-    chown -R nginx:nginx /var/log/nginx /usr/share/nginx/html
-
-# Expose ports
-EXPOSE 80 443
-
-# Environment variables
-ENV DOMAIN=mlorente.dev
+# Expose port
+EXPOSE 80
 
 # Default command
 CMD ["nginx", "-g", "daemon off;"]
