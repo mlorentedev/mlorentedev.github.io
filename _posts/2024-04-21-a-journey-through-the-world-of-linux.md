@@ -85,7 +85,7 @@ If you ever run into challenges while configuring a Linux server, the vibrant Li
 - Discussion forums
 - Local Linux groups
 - IRC software like WeeChat and HexChat
-- Collaborative projects on GitHub
+- Collaborative  on GitHub
 - Community events like Hackathons and Open Source Summits
 
 ## The Future of Linux Distributions
