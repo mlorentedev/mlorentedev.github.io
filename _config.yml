@@ -278,6 +278,7 @@ exclude:
   - LICENSE
   - README.md
   - docs/
+  - certbot
 
 plugins:
   - jekyll-paginate

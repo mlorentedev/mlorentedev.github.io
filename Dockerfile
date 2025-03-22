@@ -1,24 +1,41 @@
 # Stage 1: Build the Jekyll site
 FROM ruby:3.3-alpine AS builder
 
-# Set the working directory
+# Install system dependencies
+RUN apk add --no-cache \
+    build-base \
+    git \
+    bash \
+    zlib-dev
+
+# Set working directory
 WORKDIR /app
 
-# Install dependencies for building
-RUN apk add --no-cache build-base
+# Set up gem home in user directory
+ENV GEM_HOME="/home/jekyll/gems"
+ENV PATH="/home/jekyll/gems/bin:$PATH"
 
-# Copy Gemfile
-COPY Gemfile ./
+# Create non-root user
+RUN addgroup -S jekyll && adduser -S jekyll -G jekyll
 
-# Install Jekyll and dependencies
-RUN gem install bundler && bundle install
+# Change ownership
+RUN mkdir -p /app && chown -R jekyll:jekyll /app
+
+# Switch to non-root user
+USER jekyll
+
+# Copy Gemfile and Gemfile.lock
+COPY --chown=jekyll:jekyll Gemfile Gemfile.lock ./
+
+# Install dependencies
+RUN bundle config set --local path 'vendor/bundle' && \
+    bundle install
 
 # Copy the rest of the site
-COPY . .
+COPY --chown=jekyll:jekyll . .
 
 # Build the site
-RUN bundle exec appraisal install
-RUN bundle exec appraisal jekyll build
+RUN bundle exec jekyll build
 
 # Stage 2: Serve the static site with nginx
 FROM nginx:alpine
