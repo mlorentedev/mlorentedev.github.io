@@ -9,34 +9,32 @@ services:
       - ./jekyll:/srv/jekyll
     labels:
       - "traefik.enable=true"
+      # SSL router configuration
+      - "traefik.http.routers.jekyll-ssl.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.jekyll-ssl.entrypoints=websecure"
+      - "traefik.http.routers.jekyll-ssl.tls.certresolver=myresolver"
+      # HTTP router with redirect to HTTPS
       - "traefik.http.routers.jekyll.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.jekyll.entrypoints=websecure"
-      - "traefik.http.routers.jekyll.tls.certresolver=myresolver"
-      - "traefik.http.services.jekyll.loadbalancer.server.port=4000"
+      - "traefik.http.routers.jekyll.entrypoints=web"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.jekyll.middlewares=redirect-to-https"
+      # Service configuration
+      - "traefik.http.services.jekyll.loadbalancer.server.port=4000"  
     networks:
       - web
 
   traefik:
     image: traefik:v2.10
     restart: always
-    container_name: traefik
-    command:
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--api.insecure=true"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.myresolver.acme.httpChallenge.entryPoint=web"
-      - "--certificatesresolvers.myresolver.acme.email=${EMAIL}"
-      - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
+    container_name: traefik-${ENVIRONMENT}
     ports:
-      - "80:80"
-      - "443:443"
+      - "${WEB_PORT}:${WEB_PORT}"
+      - "${SECURE_PORT}:${SECURE_PORT}"
       - "8080:8080"  # Traefik dashboard
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./traefik/acme.json:/acme.json"
       - "./traefik/traefik.yml:/etc/traefik/traefik.yml"
+      - "./traefik/acme.json:/acme.json"
     networks:
       - web
 

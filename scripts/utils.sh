@@ -1,5 +1,5 @@
 #!/bin/bash
-# utils.sh - Common utilities for mlorente.dev scripts
+# utils.sh - Common utilities for scripting
 # This script is sourced by other scripts to provide common functionality
 
 # ------------------------------------------------------------------------------
@@ -81,36 +81,6 @@ load_env_file() {
         # Export the variable, preserving multiline content
         export "$key=$value"
     done < "$env_file"
-}
-
-# Validate environment parameter
-validate_environment() {
-    local env=$1
-    
-    if [[ -z "$env" ]]; then
-        exit_error "Missing environment parameter."
-    fi
-    
-    if [[ "$env" != "production" && "$env" != "staging" ]]; then
-        exit_error "Environment must be 'production' or 'staging'."
-    fi
-    
-    # Configure variables based on environment
-    if [ "$env" == "production" ]; then
-        export SERVER_ALIAS="mlorente-prod"
-        export SERVER_HOST="mlorente.dev"
-        export DEPLOY_DIR="/opt/mlorente"
-        export DOMAIN="mlorente.dev"
-        export SITE_URL="https://mlorente.dev"
-        export BRANCH="master"
-    else # staging
-        export SERVER_ALIAS="mlorente-staging"
-        export SERVER_HOST="staging.mlorente.dev"
-        export DEPLOY_DIR="/opt/mlorente-staging"
-        export DOMAIN="staging.mlorente.dev"
-        export SITE_URL="https://staging.mlorente.dev"
-        export BRANCH="develop"
-    fi
 }
 
 debug_print_env() {

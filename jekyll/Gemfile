@@ -2,7 +2,13 @@
 
 source "https://rubygems.org"
 
-gem 'ffi', '~> 1.17.0'
+# Jekyll and standard plugins
+gem 'jekyll', '~> 4.3.4'
 gem 'jekyll-sitemap'
 gem 'jekyll-feed'
 gem 'jekyll-seo-tag'
+
+# Required dependencies based on your configuration
+gem 'jekyll-paginate'
+gem 'kramdown-syntax-coderay'
+gem 'kramdown-parser-gfm'

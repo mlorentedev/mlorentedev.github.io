@@ -1,19 +1,14 @@
 api:
-  dashboard: true
-  insecure: true 
+  dashboard: {{TRAEFIK_DASHBOARD}}
+  insecure: {{TRAEFIK_INSECURE}}
 
 ping: {}
 
 entryPoints:
   web:
-    address: ":80"
-    http:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
+    address: ":{{WEB_PORT}}"
   websecure:
-    address: ":443"
+    address: ":{{SECURE_PORT}}"
 
 providers:
   docker:
@@ -23,7 +18,8 @@ providers:
 certificatesResolvers:
   myresolver:
     acme:
-      email: "mlorentedev@gmail.com"
+      caServer: "{{ACME_SERVER}}"
+      email: "{{ACME_EMAIL}}"
       storage: "/acme.json"
       httpChallenge:
         entryPoint: "web"

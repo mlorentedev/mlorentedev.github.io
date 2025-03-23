@@ -22,27 +22,24 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-          
+                
       - name: Install dependencies
-        run: bundle install && bundle exec appraisal install
+        run: bundle install
         
       - name: Build Jekyll site
         env:
           JEKYLL_ENV: production
-        run: bundle exec appraisal jekyll build
+        run: bundle exec jekyll build
         
-      # Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
         
-      # Login to Docker Hub
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
-      # Extract metadata for Docker
       - name: Extract metadata for Docker
         id: meta
         uses: docker/metadata-action@v4
@@ -53,7 +50,6 @@ jobs:
             type=sha,format=short
             type=raw,value=latest,enable={{is_default_branch}}
             
-      # Build and push Docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
@@ -64,99 +60,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           
-      # Create deployment artifacts
-      - name: Create deployment artifacts
-        run: |
-          mkdir -p deployment
-          cp -r nginx deployment/
-          cat > deployment/docker-compose.yml << EOF
-          version: '3.8'
-          
-          services:
-            website:
-              image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.ARTIFACT_NAME }}:latest
-              container_name: ${{ secrets.ARTIFACT_NAME }}
-              restart: always
-              ports:
-                - "80:80"
-                - "443:443"
-              volumes:
-                - ./certbot/www:/var/www/certbot/:ro
-                - ./certbot/conf:/etc/letsencrypt/:ro
-              environment:
-                - DOMAIN=\${DOMAIN}
-              networks:
-                - web
-              depends_on:
-                - certbot
-          
-            certbot:
-              image: certbot/certbot:latest
-              container_name: ${{ secrets.ARTIFACT_NAME }}_certbot
-              volumes:
-                - ./certbot/www:/var/www/certbot/:rw
-                - ./certbot/conf:/etc/letsencrypt/:rw
-              entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait \$\${!}; done;'"
-              networks:
-                - web
-          
-          networks:
-            web:
-              driver: bridge
-          EOF
-          
-          cat > deployment/init-ssl.sh << EOF
-          #!/bin/bash
-          
-          # Variables
-          domain=\${DOMAIN}
-          email=\${ADMIN_EMAIL}
-          
-          # Create directories for certbot
-          mkdir -p ./certbot/www
-          mkdir -p ./certbot/conf
-          
-          # Create dummy certificates to allow Nginx to start
-          mkdir -p ./certbot/conf/live/\${domain}
-          openssl req -x509 -nodes -newkey rsa:4096 -days 1 \\
-            -keyout ./certbot/conf/live/\${domain}/privkey.pem \\
-            -out ./certbot/conf/live/\${domain}/fullchain.pem \\
-            -subj "/CN=\${domain}"
-          
-          # Start containers
-          echo "Starting Nginx container with temporary certificates..."
-          docker-compose up -d website
-          
-          # Wait for Nginx to be ready
-          sleep 5
-          
-          # Stop Nginx
-          docker-compose stop website
-          
-          # Remove dummy certificates
-          rm -rf ./certbot/conf/live/\${domain}
-          
-          # Get real certificates
-          echo "Obtaining SSL certificates..."
-          docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot --email \${ADMIN_EMAIL} --agree-tos --no-eff-email --force-renewal -d \${domain} -d www.\${domain}
-          
-          # Start all services
-          echo "Starting services..."
-          docker-compose up -d
-          
-          echo "Setup complete!"
-          EOF
-          
-          chmod +x deployment/init-ssl.sh
-          
-          cat > deployment/.env.example << EOF
-          DOMAIN=yourdomain.com
-          ADMIN_EMAIL=your@email.com
-          DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
-          ARTIFACT_NAME=${{ secrets.ARTIFACT_NAME }}
-          EOF
-          
-      # Upload deployment artifacts
       - name: Upload deployment artifacts
         uses: actions/upload-artifact@v4
         with:
