@@ -2,6 +2,8 @@ name: Build, Dockerize and Deploy
 
 on:
   push:
+    branches:
+      - master
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -22,11 +24,14 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
+          working-directory: './jekyll'
                 
       - name: Install dependencies
+        working-directory: './jekyll'
         run: bundle install
         
       - name: Build Jekyll site
+        working-directory: './jekyll'
         env:
           JEKYLL_ENV: production
         run: bundle exec jekyll build
@@ -53,12 +58,17 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./jekyll
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Create deployment artifacts
+        run: |
+          mkdir -p deployment
+          cp -r traefik scripts docker-compose.yml .env.example ./jekyll/_site/* deployment/
           
       - name: Upload deployment artifacts
         uses: actions/upload-artifact@v4
