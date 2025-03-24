@@ -15,6 +15,14 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
 
+middlewares:
+  block-probes:
+    contentType:
+      autoDetect: false
+    headers:
+      customResponseHeaders:
+        X-Robots-Tag: "noindex, nofollow"
+        
 certificatesResolvers:
   myresolver:
     acme:

@@ -76,7 +76,7 @@ jobs:
       - name: Create deployment artifacts
         run: |
           mkdir -p deployment
-          cp -r traefik scripts docker-compose.yml .env.example ./jekyll/_site/* deployment/
+          cp -r traefik scripts docker-compose.${{ secrets.ENVIRONMENT }}.yml .env.example ./jekyll/_site/* deployment/
           cd deployment
           zip -r ../release-${{ steps.tag_version.outputs.new_version }}.zip .
           
