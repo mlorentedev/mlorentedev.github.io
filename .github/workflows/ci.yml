@@ -50,7 +50,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.ARTIFACT_NAME }}-${{ secrets.ENVIRONMENT }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.ARTIFACT_NAME }}
           tags: |
             type=sha,format=short
             type=raw,value=latest,enable={{is_default_branch}}
@@ -62,7 +62,7 @@ jobs:
           file: ./jekyll/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ secrets.ENVIRONMENT }}-${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Create deployment artifacts

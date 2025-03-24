@@ -118,7 +118,7 @@ To run the project locally:
    docker-compose up -d
    ```
 
-9. Access your site at http://localhost
+9. Access your site at <http://localhost>
 
 ### Using Your DockerHub Image
 
@@ -178,22 +178,16 @@ To deploy to a staging environment:
    ACME_SERVER=https://acme-staging-v02.api.letsencrypt.org/directory
    ```
 
-3. Edit the `_config.yml` file in the `jekyll` directory to match your staging domain:
-
-   ```yaml
-   url: "https://staging.your-domain.com"
-   ```
-
-4. Make the scripts executable
+3. Make the scripts executable
 
    ```bash
    chmod +x scripts/*.sh
    ```
 
-5. Run the deployment script
+4. Run the deployment script
 
    ```bash
-   ./scripts/deploy.sh staging
+   ./scripts/deploy.sh
    ```
 
 This script will:
@@ -238,19 +232,13 @@ The process for deploying to production is similar to staging:
    ACME_SERVER=https://acme-v02.api.letsencrypt.org/directory
    ```
 
-3. Edit the `_config.yml` file in the `jekyll` directory to match your production domain:
-
-   ```yaml
-   url: "https://your-domain.com"
-   ```
-
-4. Make the scripts executable
+3. Make the scripts executable
 
    ```bash
    chmod +x scripts/*.sh
    ```
 
-5. Run the deployment script with "production" parameter
+4. Run the deployment script with "production" parameter
 
    ```bash
    ./scripts/deploy.sh production

@@ -16,10 +16,13 @@ beautiful-jekyll-theme-*.gem
 # Drawio
 *.bkp
 
-# Secret
+# Secrets
 .env
 .env.*
 !.env.example
+traefik/acme.json
+traefik/traefik.yml
+traefik/certs/
 certbot/
 .cache_ggshield
 certs

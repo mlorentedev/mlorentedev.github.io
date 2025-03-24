@@ -9,6 +9,9 @@ cd "$PROJECT_DIR"
 [ -f "./scripts/utils.sh" ] && source ./scripts/utils.sh
 [ -f "./.env" ] && source ./.env
 
+# Set default environment to staging if not provided
+ENVIRONMENT=${1:-staging}
+
 # Set the working directory to the script's directory
 if [ "$ENVIRONMENT" != "staging" ] && [ "$ENVIRONMENT" != "production" ]; then
   log_error "Not a valid environment. Use 'staging' or 'production'."

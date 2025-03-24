@@ -32,9 +32,11 @@ touch traefik/traefik.yml
 # Choose the appropriate template based on DISABLE_HTTPS
 if [ "$DISABLE_HTTPS" = "true" ]; then
   TEMPLATE_FILE="traefik/traefik.template.http.yml"
+  export DISABLE_HTTPS="_DISABLED_"
   log_info "Using HTTP template for Traefik configuration."
 else
   TEMPLATE_FILE="traefik/traefik.template.https.yml"
+  export DISABLE_HTTPS=""
   log_info "Using HTTPS template for Traefik configuration."
 fi
 
