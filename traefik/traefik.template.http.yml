@@ -1,0 +1,14 @@
+api:
+  dashboard: {{TRAEFIK_DASHBOARD}}
+  insecure: {{TRAEFIK_INSECURE}}
+
+ping: {}
+
+entryPoints:
+  web:
+    address: ":{{WEB_PORT}}"
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false

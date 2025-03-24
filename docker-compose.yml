@@ -1,6 +1,6 @@
 services:
   jekyll:
-    #image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}:latest"
+    image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}:latest"
     build:
       context: ./jekyll
       dockerfile: Dockerfile
@@ -9,15 +9,13 @@ services:
       - ./jekyll:/srv/jekyll
     labels:
       - "traefik.enable=true"
-      # SSL router configuration
-      - "traefik.http.routers.jekyll-ssl.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.jekyll-ssl.entrypoints=websecure"
-      - "traefik.http.routers.jekyll-ssl.tls.certresolver=myresolver"
-      # HTTP router with redirect to HTTPS
+      # HTTP router configuration (always present)
       - "traefik.http.routers.jekyll.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.jekyll.entrypoints=web"
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.jekyll.middlewares=redirect-to-https"
+      # SSL router configuration (only when HTTPS is enabled)
+      - "${DISABLE_HTTPS:-traefik.http.routers.jekyll-ssl.rule=Host(`${DOMAIN}`)}"
+      - "${DISABLE_HTTPS:-traefik.http.routers.jekyll-ssl.entrypoints=websecure}"
+      - "${DISABLE_HTTPS:-traefik.http.routers.jekyll-ssl.tls.certresolver=myresolver}"
       # Service configuration
       - "traefik.http.services.jekyll.loadbalancer.server.port=4000"  
     networks:

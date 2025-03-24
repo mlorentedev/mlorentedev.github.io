@@ -17,6 +17,7 @@ beautiful-jekyll-theme-*.gem
 *.bkp
 
 # Secret
+.env
 .env.*
 !.env.example
 certbot/
