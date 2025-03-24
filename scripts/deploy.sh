@@ -5,8 +5,9 @@
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_DIR"
 
-# Set default environment to staging if not provided
-ENVIRONMENT=${1:-staging}
+# Load environment variables from .env file if it exists
+[ -f "./scripts/utils.sh" ] && source ./scripts/utils.sh
+[ -f "./.env" ] && source ./.env
 
 # Set the working directory to the script's directory
 if [ "$ENVIRONMENT" != "staging" ] && [ "$ENVIRONMENT" != "production" ]; then

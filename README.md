@@ -70,6 +70,7 @@ To run the project locally:
 
    ```.env.local
    # Site
+   ENVIRONMENT=local
    ARTIFACT_NAME=blog-site
    DOMAIN=localhost
    EMAIL=your-email@example.com
@@ -92,26 +93,32 @@ To run the project locally:
    cp .env.local .env
    ```
 
-5. Generate Traefik configuration
+5. Change url in `_config.yml` to match your local domain
+
+   ```yaml
+    url: ""
+   ```
+
+6. Generate Traefik configuration
 
    ```bash
    ./scripts/generate-traefik-config.sh
    ```
 
-6. Set up acme.json file
+7. Set up acme.json file
 
    ```bash
    touch traefik/acme.json
    chmod 600 traefik/acme.json
    ```
 
-7. Start the containers
+8. Start the containers
 
    ```bash
    docker-compose up -d
    ```
 
-8. Access your site at http://localhost
+9. Access your site at http://localhost
 
 ### Using Your DockerHub Image
 
@@ -122,7 +129,7 @@ If you already have the image in DockerHub and want to use it instead of buildin
    ```yaml
    services:
      jekyll:
-       image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}:latest"
+        image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}-${ENVIRONMENT}:latest"
        # Comment out the build section
        #build:
        #  context: ./jekyll
@@ -144,8 +151,8 @@ To deploy to a staging environment:
 1. Copy all necessary files to your staging server. You can use `scp` or any other file transfer method. For example:
 
    ```bash
-   scp -r scripts/ user@staging-server:/opt/your-project/
-   scp -r traefik/ user@staging-server:/opt/your-project/
+   scp -r scripts/ user@staging-server:/opt/your-project/scripts
+   scp -r traefik/ user@staging-server:/opt/your-project/traefik
    scp .env.example user@staging-server:/opt/your-project/.env.staging
    scp docker-compose.yml user@staging-server:/opt/your-project/
    ```
@@ -171,13 +178,19 @@ To deploy to a staging environment:
    ACME_SERVER=https://acme-staging-v02.api.letsencrypt.org/directory
    ```
 
-3. Make the scripts executable
+3. Edit the `_config.yml` file in the `jekyll` directory to match your staging domain:
+
+   ```yaml
+   url: "https://staging.your-domain.com"
+   ```
+
+4. Make the scripts executable
 
    ```bash
    chmod +x scripts/*.sh
    ```
 
-4. Run the deployment script
+5. Run the deployment script
 
    ```bash
    ./scripts/deploy.sh staging
@@ -225,13 +238,19 @@ The process for deploying to production is similar to staging:
    ACME_SERVER=https://acme-v02.api.letsencrypt.org/directory
    ```
 
-3. Make the scripts executable
+3. Edit the `_config.yml` file in the `jekyll` directory to match your production domain:
+
+   ```yaml
+   url: "https://your-domain.com"
+   ```
+
+4. Make the scripts executable
 
    ```bash
    chmod +x scripts/*.sh
    ```
 
-4. Run the deployment script with "production" parameter
+5. Run the deployment script with "production" parameter
 
    ```bash
    ./scripts/deploy.sh production

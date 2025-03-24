@@ -1,6 +1,6 @@
 services:
   jekyll:
-    image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}:latest"
+    image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}-${ENVIRONMENT}:latest"
     build:
       context: ./jekyll
       dockerfile: Dockerfile
