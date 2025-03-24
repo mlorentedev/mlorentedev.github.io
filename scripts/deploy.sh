@@ -12,6 +12,17 @@ if [ ! -f "./scripts/utils.sh" ]; then
 fi
 source ./scripts/utils.sh
 
+# Check if version of Docker Compose is compatible
+MIN_VERSION="1.26"
+DOCKER_VERSION=$(docker version --format '{{.Client.APIVersion}}')
+if [ "$(printf '%s\n' "$MIN_VERSION" "$DOCKER_VERSION" | sort -V | head -n1)" = "$MIN_VERSION" ] && [ "$DOCKER_VERSION" != "$MIN_VERSION" ]; then
+  log_info "Docker Compose v1.26 or lower detected. Updating docker-compose to use version 2."
+  DOCKER_COMPOSE_COMMAND="docker-compose"
+else
+  log_info "Docker Compose v1.27 or higher detected. Using docker compose command."
+  DOCKER_COMPOSE_COMMAND="docker compose"
+fi
+
 # Validate environment parameter
 ENVIRONMENT=${1:-}
 
@@ -35,7 +46,7 @@ source .env
 
 # Stop running containers
 log_info "Stopping existing containers..."
-docker compose -f docker-compose.$ENVIRONMENT.yml down
+$DOCKER_COMPOSE_COMMAND -f docker-compose.$ENVIRONMENT.yml down
 
 # Environment-specific configuration
 ./scripts/generate-traefik-config.sh
@@ -43,13 +54,13 @@ if [ "$ENVIRONMENT" != "local" ]; then
   log_info "Setting up production/staging environment..."
   touch traefik/acme.json
   chmod 600 traefik/acme.json  
-  docker compose -f docker-compose.$ENVIRONMENT.yml pull
+  $DOCKER_COMPOSE_COMMAND -f docker-compose.$ENVIRONMENT.yml pull
 else
   log_info "Setting up local development environment..."
 fi
 
 # Start containers
 log_info "Starting containers for $ENVIRONMENT environment..."
-docker compose -f docker-compose.$ENVIRONMENT.yml up -d $([[ "$ENVIRONMENT" == "local" ]] && echo "--build")
+$DOCKER_COMPOSE_COMMAND -f docker-compose.$ENVIRONMENT.yml up -d $([[ "$ENVIRONMENT" == "local" ]] && echo "--build")
 
 log_success "Deployment to $ENVIRONMENT environment completed successfully."
