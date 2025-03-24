@@ -1,23 +1,20 @@
 services:
   jekyll:
     image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}:${ENVIRONMENT}-latest"
-    build:
-      context: ./jekyll
-      dockerfile: Dockerfile
     container_name: jekyll-site
-    volumes:
-      - ./jekyll:/srv/jekyll
+    restart: always
+    environment:
+      - "JEKYLL_ENV=${ENVIRONMENT}"
     labels:
       - "traefik.enable=true"
-      # HTTP router configuration (always present)
       - "traefik.http.routers.jekyll.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.jekyll.entrypoints=web"
-      # Conditional labels for HTTPS (only added when DISABLE_HTTPS is not true)
-      - "traefik.http.routers.jekyll-ssl.rule=Host(`${DOMAIN}`)${DISABLE_HTTPS:-}"
-      - "traefik.http.routers.jekyll-ssl.entrypoints=websecure${DISABLE_HTTPS:-}"
-      - "traefik.http.routers.jekyll-ssl.tls.certresolver=myresolver${DISABLE_HTTPS:-}"
-      # Service configuration
-      - "traefik.http.services.jekyll.loadbalancer.server.port=4000"  
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.jekyll.middlewares=redirect-to-https"
+      - "traefik.http.routers.jekyll-ssl.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.jekyll-ssl.entrypoints=websecure"
+      - "traefik.http.routers.jekyll-ssl.tls.certresolver=myresolver"
+      - "traefik.http.services.jekyll.loadbalancer.server.port=4000"
     networks:
       - web
 
@@ -28,7 +25,6 @@ services:
     ports:
       - "${WEB_PORT}:${WEB_PORT}"
       - "${SECURE_PORT}:${SECURE_PORT}"
-      - "8080:8080"  # Traefik dashboard
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./traefik/traefik.yml:/etc/traefik/traefik.yml"

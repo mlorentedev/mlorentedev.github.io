@@ -34,8 +34,8 @@ This project is a personal blogging platform built using Jekyll static site gene
 │   ├── generate-traefik-config.sh # Traefik configuration generator
 │   └── utils.sh           # Utility functions
 ├── traefik/               # Traefik configuration
-│   ├── traefik.template.yml # Template for Traefik configuration
-│   └── acme.json          # Let's Encrypt certificates storage
+│   ├── traefik.template.http.yml # Traefik HTTP configuration template
+│   ├── traefik.template.https.yml # Traefik HTTPS configuration template
 ├── .env.example           # Example environment configuration
 ├── docker-compose.yml     # Docker Compose service definitions
 └── README.md              # Project documentation

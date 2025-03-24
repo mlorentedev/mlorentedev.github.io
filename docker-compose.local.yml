@@ -1,0 +1,35 @@
+services:
+  jekyll:
+    build:
+      context: ./jekyll
+      dockerfile: Dockerfile
+    container_name: jekyll-site
+    volumes:
+      - ./jekyll:/srv/jekyll
+    environment:
+      - "JEKYLL_ENV=${ENVIRONMENT}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jekyll.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.jekyll.entrypoints=web"
+      - "traefik.http.services.jekyll.loadbalancer.server.port=4000"  
+    networks:
+      - web
+
+  traefik:
+    image: traefik:v2.10
+    restart: always
+    container_name: traefik-${ENVIRONMENT}
+    ports:
+      - "${WEB_PORT}:${WEB_PORT}"
+      - "${SECURE_PORT}:${SECURE_PORT}"
+      - "8080:8080"  # Traefik dashboard
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./traefik/traefik.yml:/etc/traefik/traefik.yml"
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
