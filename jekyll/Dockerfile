@@ -16,9 +16,6 @@ RUN bundle config set --local force_ruby_platform true && \
 # Copy the entire Jekyll site into the container
 COPY . .
 
-# Build the site (can be uncommented for production deployments)
-RUN JEKYLL_ENV=production bundle exec jekyll build
-
 # Expose port for the Jekyll site
 EXPOSE 4000
 
