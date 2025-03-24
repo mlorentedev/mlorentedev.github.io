@@ -13,12 +13,14 @@ jobs:
     name: Build Jekyll and Docker
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
       
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        
         
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -35,6 +37,12 @@ jobs:
         env:
           JEKYLL_ENV: production
         run: bundle exec jekyll build
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ secrets.REPO_TOKEN }}
         
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -52,8 +60,8 @@ jobs:
           images: |
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.ARTIFACT_NAME }}
           tags: |
-            type=sha,format=short
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=${{ secrets.ENVIRONMENT }}-sha-{{sha}}
+            type=raw,value=${{ secrets.ENVIRONMENT }}-latest,enable={{is_default_branch}}
             
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -62,16 +70,27 @@ jobs:
           file: ./jekyll/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ secrets.ENVIRONMENT }}-${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Create deployment artifacts
         run: |
           mkdir -p deployment
           cp -r traefik scripts docker-compose.yml .env.example ./jekyll/_site/* deployment/
+          cd deployment
+          zip -r ../release-${{ steps.tag_version.outputs.new_version }}.zip .
           
       - name: Upload deployment artifacts
         uses: actions/upload-artifact@v4
         with:
           name: deployment-files
           path: deployment
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_version }}
+          name: Release ${{ steps.tag_version.outputs.new_version }}
+          body: ${{ steps.tag_version.outputs.changelog }}
+          artifacts: "release-${{ steps.tag_version.outputs.new_version }}.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
