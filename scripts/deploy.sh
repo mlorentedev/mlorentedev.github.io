@@ -6,11 +6,11 @@ PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_DIR"
 
 # Load utility functions
-if [ ! -f "./scripts/utils.sh" ]; then
+if [ ! -f "$PROJECT_DIR/scripts/utils.sh" ]; then
   echo "Error: utils.sh not found. Please ensure it exists."
   exit 1
 fi
-source ./scripts/utils.sh
+source "$PROJECT_DIR/scripts/utils.sh"
 
 # Check if version of Docker Compose is compatible
 MIN_VERSION="1.26"
@@ -23,44 +23,113 @@ else
   DOCKER_COMPOSE_COMMAND="docker compose"
 fi
 
-# Validate environment parameter
-ENVIRONMENT=${1:-}
+# Function to deploy a specific environment
+deploy_environment() {
+  local env=$1
+  
+  # Skip non-environment deployments
+  if [ "$env" == "all" ] || [ "$env" == "common" ]; then
+    return 0
+  fi
+  
+  # Load environment variables
+  if [ ! -f ".env.$env" ]; then
+    log_error "Environment file .env.$env not found."
+    return 1
+  fi
+  
+  # Load the environment variables
+  log_info "Loading environment from .env.$env"
+  cp ".env.$env" .env
+  source .env
+  
+  # Deploy the environment
+  log_info "Deploying $env environment..."
+  $DOCKER_COMPOSE_COMMAND -f docker-compose.$env.yml up -d
+  
+  log_success "$env environment deployed successfully."
+}
 
-if [ -z "$ENVIRONMENT" ]; then
-  log_error "Usage: $0 <environment> (local, staging, or production)"
+# Function to deploy common services (Traefik)
+deploy_common() {
+  local env=${1:-staging}
+  
+  # Select appropriate environment file
+  if [ "$env" == "staging" ]; then
+    log_info "Loading STAGING environment for Traefik configuration"
+    cp ".env.staging" .env
+  elif [ "$env" == "production" ]; then
+    log_info "Loading PRODUCTION environment for Traefik configuration"
+    cp ".env.production" .env
+  else
+    log_error "Invalid environment for Traefik configuration."
+    return 1
+  fi
+    
+  # Generate Traefik configuration
+  ./scripts/generate-traefik-config.sh
+  
+  # Check acme.json file and permissions
+  if [ ! -f "traefik/acme.json" ]; then
+    log_info "Creating acme.json file"
+    touch traefik/acme.json
+  fi
+  chmod 600 traefik/acme.json
+  
+  # Deploy Traefik
+  log_info "Deploying Traefik..."
+  $DOCKER_COMPOSE_COMMAND -f docker-compose.traefik.yml up -d
+  
+  log_success "Traefik deployed successfully."
+}
+
+# Main script execution
+ACTION=${1:-deploy}
+ENVIRONMENT=${2:-all}
+
+# Validate action
+if [ "$ACTION" != "deploy" ] && [ "$ACTION" != "stop" ]; then
+  log_error "Invalid action: $ACTION. Use 'deploy' or 'stop'."
   exit 1
 fi
 
-if [ "$ENVIRONMENT" != "local" ] && [ "$ENVIRONMENT" != "staging" ] && [ "$ENVIRONMENT" != "production" ]; then
-  log_error "Invalid environment: $ENVIRONMENT. Use 'local', 'staging', or 'production'."
+# Validate environment
+if [ "$ENVIRONMENT" != "staging" ] && [ "$ENVIRONMENT" != "production" ] && [ "$ENVIRONMENT" != "common" ] && [ "$ENVIRONMENT" != "all" ]; then
+  log_error "Invalid environment: $ENVIRONMENT. Use 'staging', 'production', 'common', or 'all'."
   exit 1
 fi
 
-# Load environment variables from the specified .env file
-if [ ! -f ".env.$ENVIRONMENT" ]; then
-  log_error "Environment file .env.$ENVIRONMENT not found."
-  exit 1
+# Perform the requested action
+if [ "$ACTION" == "deploy" ]; then
+  # Deploy the requested environment(s)
+  if [ "$ENVIRONMENT" == "all" ]; then
+    deploy_common "staging"
+    deploy_environment "staging"
+    deploy_common "production"
+    deploy_environment "production"
+  elif [ "$ENVIRONMENT" == "common" ]; then
+    deploy_common
+  elif [ "$ENVIRONMENT" == "staging" ]; then
+    deploy_common "staging"
+    deploy_environment "staging"
+  elif [ "$ENVIRONMENT" == "production" ]; then
+    deploy_common "production"
+    deploy_environment "production"
+  fi
+elif [ "$ACTION" == "stop" ]; then
+  # Stop the requested environment(s)
+  if [ "$ENVIRONMENT" == "all" ]; then
+    log_info "Stopping all environments..."
+    $DOCKER_COMPOSE_COMMAND -f docker-compose.production.yml down --remove-orphans
+    $DOCKER_COMPOSE_COMMAND -f docker-compose.staging.yml down --remove-orphans
+    $DOCKER_COMPOSE_COMMAND -f docker-compose.traefik.yml down --remove-orphans
+  elif [ "$ENVIRONMENT" == "common" ]; then
+    log_info "Stopping Traefik..."
+    $DOCKER_COMPOSE_COMMAND -f docker-compose.traefik.yml down --remove-orphans
+  else
+    log_info "Stopping $ENVIRONMENT environment..."
+    $DOCKER_COMPOSE_COMMAND -f docker-compose.$ENVIRONMENT.yml down --remove-orphans
+  fi
+  
+  log_success "Stop operation completed successfully."
 fi
-cp .env.$ENVIRONMENT .env
-source .env
-
-# Stop running containers
-log_info "Stopping existing containers..."
-$DOCKER_COMPOSE_COMMAND -f docker-compose.$ENVIRONMENT.yml down
-
-# Environment-specific configuration
-./scripts/generate-traefik-config.sh
-if [ "$ENVIRONMENT" != "local" ]; then
-  log_info "Setting up production/staging environment..."
-  touch traefik/acme.json
-  chmod 600 traefik/acme.json  
-  $DOCKER_COMPOSE_COMMAND -f docker-compose.$ENVIRONMENT.yml pull
-else
-  log_info "Setting up local development environment..."
-fi
-
-# Start containers
-log_info "Starting containers for $ENVIRONMENT environment..."
-$DOCKER_COMPOSE_COMMAND -f docker-compose.$ENVIRONMENT.yml up -d $([[ "$ENVIRONMENT" == "local" ]] && echo "--build")
-
-log_success "Deployment to $ENVIRONMENT environment completed successfully."

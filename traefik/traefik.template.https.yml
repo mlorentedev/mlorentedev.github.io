@@ -7,6 +7,11 @@ ping: {}
 entryPoints:
   web:
     address: ":{{WEB_PORT}}"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https    
   websecure:
     address: ":{{SECURE_PORT}}"
 
@@ -14,15 +19,8 @@ providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
-
-middlewares:
-  block-probes:
-    contentType:
-      autoDetect: false
-    headers:
-      customResponseHeaders:
-        X-Robots-Tag: "noindex, nofollow"
-        
+    network: traefik_network
+       
 certificatesResolvers:
   myresolver:
     acme:
@@ -31,3 +29,8 @@ certificatesResolvers:
       storage: "/acme.json"
       httpChallenge:
         entryPoint: "web"
+
+log:
+  level: INFO
+
+accessLog: {}

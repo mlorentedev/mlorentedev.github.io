@@ -8,15 +8,13 @@ entryPoints:
   web:
     address: ":{{WEB_PORT}}"
 
-middlewares:
-  block-probes:
-    contentType:
-      autoDetect: false
-    headers:
-      customResponseHeaders:
-        X-Robots-Tag: "noindex, nofollow"
-
 providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
+    network: traefik_network
+       
+log:
+  level: INFO
+
+accessLog: {}

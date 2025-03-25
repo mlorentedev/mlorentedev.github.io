@@ -1,37 +1,24 @@
 services:
-  jekyll:
+  jekyll-staging:
     image: "${DOCKERHUB_USERNAME}/${ARTIFACT_NAME}:${ENVIRONMENT}-latest"
-    container_name: jekyll-site
+    container_name: jekyll-staging
+    restart: always
     environment:
       - "JEKYLL_ENV=${ENVIRONMENT}"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.jekyll.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.jekyll.entrypoints=web"
+      - "traefik.http.routers.jekyll-staging.rule=Host(`staging.${DOMAIN}`)"
+      - "traefik.http.routers.jekyll-staging.entrypoints=web"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.jekyll.middlewares=redirect-to-https"
-      - "traefik.http.routers.jekyll-ssl.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.jekyll-ssl.entrypoints=websecure"
-      - "traefik.http.routers.jekyll-ssl.tls.certresolver=myresolver"
-      - "traefik.http.services.jekyll.loadbalancer.server.port=4000"
+      - "traefik.http.routers.jekyll-staging.middlewares=redirect-to-https"
+      - "traefik.http.routers.jekyll-staging-ssl.rule=Host(`staging.${DOMAIN}`)"
+      - "traefik.http.routers.jekyll-staging-ssl.entrypoints=websecure"
+      - "traefik.http.routers.jekyll-staging-ssl.tls.certresolver=myresolver"
+      - "traefik.http.services.jekyll-staging.loadbalancer.server.port=4000"
     networks:
-      - web
-
-  traefik:
-    image: traefik:v2.10
-    restart: always
-    container_name: traefik-${ENVIRONMENT}
-    ports:
-      - "${WEB_PORT}:${WEB_PORT}"
-      - "${SECURE_PORT}:${SECURE_PORT}"
-      - "8080:8080"  # Traefik dashboard
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "./traefik/traefik.yml:/etc/traefik/traefik.yml"
-      - "./traefik/acme.json:/acme.json"
-    networks:
-      - web
+      - traefik_network
 
 networks:
-  web:
-    driver: bridge
+  traefik_network:
+    name: traefik_network
+    external: true
