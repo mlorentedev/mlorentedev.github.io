@@ -6,12 +6,7 @@ ping: {}
 
 entryPoints:
   web:
-    address: ":{{WEB_PORT}}"
-    http:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https    
+    address: ":{{WEB_PORT}}"   
   websecure:
     address: ":{{SECURE_PORT}}"
 
@@ -31,6 +26,6 @@ certificatesResolvers:
         entryPoint: "web"
 
 log:
-  level: INFO
+  level: DEBUG
 
 accessLog: {}

@@ -11,13 +11,12 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./traefik/traefik.yml:/etc/traefik/traefik.yml"
       - "./traefik/acme.json:/acme.json"
+    env_file:
+      - .env      
     labels:
       - "traefik.enable=true"
       # Dashboard access
       - "traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN}`)"
-      - "traefik.http.routers.acme-challenge.rule=PathPrefix(`/.well-known/acme-challenge/`)"
-      - "traefik.http.routers.acme-challenge.service=acme-challenge"
-      - "traefik.http.services.acme-challenge.loadbalancer.server.port=80"      
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
@@ -27,6 +26,10 @@ services:
       - "traefik.http.routers.dashboardip.service=api@internal"
       - "traefik.http.routers.dashboardip.entrypoints=web"
       - "traefik.http.routers.dashboardip.middlewares=auth"
+      # Allow ACME HTTP Challenge
+      - "traefik.http.routers.acme-http-solver.rule=PathPrefix(`/.well-known/acme-challenge/`)"
+      - "traefik.http.routers.acme-http-solver.entrypoints=web"
+      - "traefik.http.routers.acme-http-solver.priority=100"
       # Middleware for basic auth
       - "traefik.http.middlewares.auth.basicauth.users=${TRAEFIK_DASHBOARD_USERS}"
     networks:

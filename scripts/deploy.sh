@@ -103,9 +103,8 @@ fi
 if [ "$ACTION" == "deploy" ]; then
   # Deploy the requested environment(s)
   if [ "$ENVIRONMENT" == "all" ]; then
-    deploy_common "staging"
-    deploy_environment "staging"
     deploy_common "production"
+    deploy_environment "staging"
     deploy_environment "production"
   elif [ "$ENVIRONMENT" == "common" ]; then
     deploy_common
