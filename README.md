@@ -227,7 +227,7 @@ The project follows Semantic Versioning through commit messages:
   - Messages starting with `fix:`, `docs:`, `chore:`, `style:`, etc.
   - Example: `fix: correct contact form error`
 
-You can force a specific increment using `#major`, `#minor`, or `#patch` in the commit message body.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more details on commit message conventions and versioning.
 
 ## Troubleshooting
 
