@@ -37,6 +37,11 @@ deploy_environment() {
     log_error "Environment file .env.$env not found."
     return 1
   fi
+
+  if [ -f ".env" ]; then
+    log_info "Removing existing .env file to avoid conflicts."
+    rm .env
+  fi  
   
   # Load the environment variables
   log_info "Loading environment from .env.$env"
@@ -69,11 +74,13 @@ deploy_common() {
   # Generate Traefik configuration
   ./scripts/generate-traefik-config.sh
   
-  # Check acme.json file and permissions
-  if [ ! -f "traefik/acme.json" ]; then
-    log_info "Creating acme.json file"
-    touch traefik/acme.json
+  # Recreate acme.json file and permissions
+  if [ -f "traefik/acme.json" ]; then
+    log_info "Removing existing acme.json file"
+    rm traefik/acme.json
   fi
+  log_info "Creating acme.json file"
+  touch traefik/acme.json
   chmod 600 traefik/acme.json
   
   # Deploy Traefik

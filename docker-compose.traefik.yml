@@ -1,31 +1,27 @@
 services:
-  traefik:
+  traefik-proxy:
     image: traefik:v2.11
     container_name: traefik-proxy
     restart: always
     ports:
-      - "${WEB_PORT}:${WEB_PORT}"
-      - "${SECURE_PORT}:${SECURE_PORT}"
-      - "8080:8080"  # Traefik dashboard
+      - 80:80
+      - 443:443
+      - 8080:8080  # Traefik dashboard
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./traefik/traefik.yml:/etc/traefik/traefik.yml"
       - "./traefik/acme.json:/acme.json"
+      - "./traefik/logs:/var/log/traefik"       
     env_file:
       - .env      
     labels:
       - "traefik.enable=true"
       # Dashboard access
-      - "traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN}`)"
+      - "traefik.http.routers.dashboard.rule=Host(`traefik.${DOMAIN}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
       - "traefik.http.routers.dashboard.middlewares=auth"
-      # Access to the dashboard API
-      - "traefik.http.routers.dashboardip.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
-      - "traefik.http.routers.dashboardip.service=api@internal"
-      - "traefik.http.routers.dashboardip.entrypoints=web"
-      - "traefik.http.routers.dashboardip.middlewares=auth"
       # Allow ACME HTTP Challenge
       - "traefik.http.routers.acme-http-solver.rule=PathPrefix(`/.well-known/acme-challenge/`)"
       - "traefik.http.routers.acme-http-solver.entrypoints=web"

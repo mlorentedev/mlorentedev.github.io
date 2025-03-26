@@ -16,10 +16,9 @@ if [ -z "$TRAEFIK_DASHBOARD" ]; then
 fi
 
 # Set default values for Traefik configuration
+DOMAIN=${DOMAIN}
 TRAEFIK_DASHBOARD=${TRAEFIK_DASHBOARD}
 TRAEFIK_INSECURE=${TRAEFIK_INSECURE}
-WEB_PORT=${WEB_PORT}
-SECURE_PORT=${SECURE_PORT}
 ACME_SERVER=${ACME_SERVER}
 ACME_EMAIL=${ACME_EMAIL}
 DISABLE_HTTPS=${DISABLE_HTTPS}
@@ -40,10 +39,9 @@ fi
 
 # Generate the Traefik configuration file from the template
 cat $TEMPLATE_FILE | \
+  sed "s/{{DOMAIN}}/$DOMAIN/g" | \
   sed "s/{{TRAEFIK_DASHBOARD}}/$TRAEFIK_DASHBOARD/g" | \
   sed "s/{{TRAEFIK_INSECURE}}/$TRAEFIK_INSECURE/g" | \
-  sed "s/{{WEB_PORT}}/$WEB_PORT/g" | \
-  sed "s/{{SECURE_PORT}}/$SECURE_PORT/g" | \
   sed "s#{{ACME_SERVER}}#$ACME_SERVER#g" | \
   sed "s/{{ACME_EMAIL}}/$ACME_EMAIL/g" > traefik/traefik.yml
 
