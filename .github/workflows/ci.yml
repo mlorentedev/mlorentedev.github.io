@@ -38,6 +38,20 @@ jobs:
           JEKYLL_ENV: production
         run: bundle exec jekyll build
 
+      - name: Generate changelog and bump version
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.REPO_TOKEN }}
+          git-message: 'chore(release): {version}'
+          preset: 'angular'
+          tag-prefix: 'v'
+          output-file: 'CHANGELOG.md'
+          release-count: 0
+          skip-on-empty: false
+          skip-version-file: true
+          skip-commit: false
+
       - name: Bump version and push tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.1
@@ -72,6 +86,22 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Generate release description
+        id: release_description
+        run: |
+          # Extract changes since the last tag
+          CHANGES=$(git log $(git describe --tags --abbrev=0 2>/dev/null || echo HEAD~1)..HEAD --pretty=format:"- %s (%h)" --reverse)
+          
+          # Create a formatted changelog
+          echo "RELEASE_DESCRIPTION<<EOF" >> $GITHUB_ENV
+          echo "## What's Changed in v${{ steps.changelog.outputs.version }}" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "$CHANGES" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          echo "## Detailed Changelog" >> $GITHUB_ENV
+          echo "See [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/master/CHANGELOG.md) for full details." >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV          
 
       - name: Create deployment artifacts
         run: |

@@ -1,10 +1,6 @@
-# My personal blog site
+# My site
 
 My personal site built with Jekyll, containerized with Docker, and deployed using Traefik for SSL termination and reverse proxy.
-
-## Project Overview
-
-This project is a personal blogging platform built using Jekyll static site generator. The website is containerized using Docker and can be deployed to different environments (local, staging, production) with automated CI/CD pipelines. Traefik is used as a reverse proxy and for SSL certificate management.
 
 ## Features
 
@@ -21,24 +17,39 @@ This project is a personal blogging platform built using Jekyll static site gene
 ## Project Structure
 
 ```bash
-├── .github/               # GitHub Actions workflow configurations
-├── jekyll/                # Jekyll website source code
-│   ├── _posts/            # Blog post content
-│   ├── _layouts/          # Page layouts
-│   ├── _includes/         # Reusable components
-│   ├── assets/            # Static assets (CSS, JS, images)
-│   ├── _config.yml        # Jekyll configuration
-│   └── Dockerfile         # Docker image definition for Jekyll
-├── scripts/               # Deployment and utility scripts
-│   ├── deploy.sh          # Main deployment script
-│   ├── generate-traefik-config.sh # Traefik configuration generator
-│   └── utils.sh           # Utility functions
-├── traefik/               # Traefik configuration
-│   ├── traefik.template.http.yml # Traefik HTTP configuration template
-│   ├── traefik.template.https.yml # Traefik HTTPS configuration template
-├── .env.example           # Example environment configuration
-├── docker-compose.yml     # Docker Compose service definitions
-└── README.md              # Project documentation
+├── .github/                       # GitHub Actions workflow configurations
+├── docker-compose.local.yml       # Local environment docker-compose config
+├── docker-compose.production.yml  # Production environment config
+├── docker-compose.staging.yml     # Staging environment config
+├── docker-compose.traefik.yml     # Traefik proxy configuration
+├── .env.example                   # Example environment variables
+├── jekyll                         # Main Jekyll site directory
+│   ├── _config.yml                # Jekyll configuration
+│   ├── _data                      # Data files for Jekyll
+│   ├── _includes                  # Template includes
+│   ├── _layouts                   # Page layouts
+│   ├── _posts                     # Blog post content
+│   ├── 404.html                   # 404 error page
+│   ├── aboutme.html               # About me page
+│   ├── assets                     # Static assets
+│   │   ├── css                    # Stylesheets
+│   │   ├── cv                     # Resume/CV files
+│   │   ├── img                    # Image assets
+│   │   ├── js                     # JavaScript files
+│   │   └── pdf                    # PDF documents
+│   ├── Dockerfile                 # Docker image definition
+│   ├── Gemfile                    # Ruby dependencies
+│   └── index.html                 # Site homepage
+├── README.md                      # Project documentation
+├── scripts                        # Utility scripts
+│   ├── cleanup.sh                 # Resource cleanup
+│   ├── deploy.sh                  # Deployment script
+│   ├── generate-traefik-config.sh # Traefik config generator
+│   ├── generate-traefik-credentials.sh # Auth credential generator
+│   └── utils.sh                   # Shared utility functions
+└── traefik                        # Traefik configuration templates
+    ├── traefik.template.http.yml  # HTTP configuration template
+    └── traefik.template.https.yml # HTTPS configuration template
 ```
 
 ## Prerequisites
@@ -192,15 +203,31 @@ The project includes a GitHub Actions workflow that:
 2. Creates a Docker image
 3. Pushes the image to DockerHub
 4. Creates deployment artifacts
+5. Generates a new release
 
-To set up the CI/CD pipeline:
+The workflow is triggered by:
 
-1. Add these secrets to your GitHub repository:
-   - `DOCKERHUB_USERNAME`: Your DockerHub username
-   - `DOCKERHUB_TOKEN`: Your DockerHub access token
-   - `ARTIFACT_NAME`: The name of your Docker image
+- Push to the `master` branch
+- Daily at midnight `(cron: '0 0 * * *')`
+- Manual execution via workflow_dispatch
 
-2. Push to the `master` branch to trigger the build and deployment process
+### Versioning
+
+The project follows Semantic Versioning through commit messages:
+
+- **Major version** increments with breaking changes:
+  - Messages containing "BREAKING CHANGE:" or "!:"
+  - Example: `feat!: breaking change description`
+
+- **Minor version** increments with new features:
+  - Messages starting with `feat:`
+  - Example: `feat: add new search functionality`
+
+- **Patch version** increments with fixes/small changes:
+  - Messages starting with `fix:`, `docs:`, `chore:`, `style:`, etc.
+  - Example: `fix: correct contact form error`
+
+You can force a specific increment using `#major`, `#minor`, or `#patch` in the commit message body.
 
 ## Troubleshooting
 
