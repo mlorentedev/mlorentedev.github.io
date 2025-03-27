@@ -2,7 +2,7 @@ FROM ruby:3.1-alpine
 
 # Add Jekyll dependencies to Alpine
 RUN apk update && \
-    apk add --no-cache build-base gcc cmake git musl-dev && \
+    apk add --no-cache build-base gcc cmake git musl-dev libc-dev && \
     gem update bundler && gem install bundler -v 2.5.22
 
 # Set the working directory inside the container
