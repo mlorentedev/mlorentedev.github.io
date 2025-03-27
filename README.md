@@ -125,8 +125,9 @@ First need to generate a password for Traefik dashboard and set it in the enviro
 
    ```bash
    ssh mlorente-deployer "mkdir -p /opt/mlorente.dev"
-   scp -r -p scripts/ mlorente-deployer:/opt/mlorente.dev/
-   scp -r -p traefik/ mlorente-deployer:/opt/mlorente.dev/
+   ssh mlorente-deployer "rm -f /opt/mlorente.dev/traefik/traefik.yml"
+   scp -r -p scripts/* mlorente-deployer:/opt/mlorente.dev/scripts/
+   scp -r -p traefik/* mlorente-deployer:/opt/mlorente.dev/traefik/
    scp -p .env.staging mlorente-deployer:/opt/mlorente.dev/
    scp -p .env.production mlorente-deployer:/opt/mlorente.dev/
    scp -p docker-compose.staging.yml mlorente-deployer:/opt/mlorente.dev/
