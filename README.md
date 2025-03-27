@@ -103,10 +103,12 @@ To run the project locally:
     url: ""
    ```
 
-6. Launch deployment script with `local` parameter
+6. Launch the services
 
    ```bash
-   ./scripts/deploy.sh local
+   docker network create traefik_network
+   ./scripts/generate-traefik-config.sh   
+   docker-compose -f docker-compose.local.yml up -d --build
    ```
 
 7. Access your site at <http://localhost>
